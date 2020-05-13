@@ -1,6 +1,6 @@
 package app.modele;
 
-public class Defense {
+public class Tour {
 	
 	private int pv;
 	
@@ -8,7 +8,7 @@ public class Defense {
 	
 	private int x,y;
 	
-	public Defense(int p, int a, int x, int y) {
+	public Tour(int p, int a, int x, int y) {
 		pv=p;
 		attaque=a;
 		this.x=x;
@@ -19,11 +19,23 @@ public class Defense {
 		return attaque;
 	}
 	
+	public void recevoirDegats(int d) {
+		pv-=d;
+	}
+	
 	public boolean estEnVie() {
 		if(pv!=0) {
 			return true;
 		}
 		return false;
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
 	}
 
 }
