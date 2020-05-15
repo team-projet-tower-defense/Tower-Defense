@@ -1,16 +1,20 @@
 package app.controleur;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import app.modele.Carte;
+import app.modele.Ennemi;
 import app.modele.Tour;
-
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -20,52 +24,87 @@ public class Controleur implements Initializable {
 	@FXML
 	private TilePane grille;
 
-	private Carte carte;
+	private static int[][] carte = Carte.getTerrain() ;
 	
-	private Tour defense;
+	private Ennemi ennemi;
+	
+	private Timeline gameLoop;
+	
+	private int temps;
+	
+	private ArrayList<Group> groupes = new ArrayList() ;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.carte = new Carte();
+		
 		afficherCarte();
-		ajouterDefense();
-		creerSprite(defense);
+		
+		creerSprite(ajouterEnnemi());
+		//
 	}
 	
-	public void ajouterDefense() {
-		defense= new Tour(10,10,10,10);
+	public Ennemi ajouterEnnemi() {
+		Ennemi e= new Ennemi(100,5,2,10,10);
+		return e;
 		
 	}
 	
-	private void creerSprite(Tour a) {
+	private void creerSprite(Ennemi e) {
 		
-		Circle r= new Circle(2);
-		r.setFill(Color.WHITE);
+		Group g = groupes.get(e.getX());
 		
-		r.setTranslateX(a.getX());
-		r.setTranslateY(a.getY());	
-		grille.getChildren().add(r);
+		
+		ImageView resu = new ImageView("file:src/app/ressources/sorciere.png");
+		g.getChildren().add(resu);
+		
+	
+		//group
+		//blend mode multiply
+		//grille.getChildren().add(resu);
+		//(x*20+y)
+		
+		
+		
+		
+		
 	}
 
 	private void afficherCarte() {
 
-		for (int x = 0; x < carte.getLargeur(); x++) {
-			for (int y = 0; y < carte.getHauteur(); y++) {
-				grille = new TilePane();
-				Image tile;
-				int codeCase = carte.getCase(x, y);
+		for (int x = 0; x < carte.length; x++) {
+			for (int y = 0; y < carte[x].length; y++) {
+				
+				Group g = new Group();
+				int codeCase = carte[x][y];
 
 				if (codeCase == 7) {
-					grille.getChildren().add(ajouterImage("sable.png"));
+					
+					
+					g.getChildren().add(new ImageView("file:src/app/ressources/sable.png"));
+					grille.getChildren().add(g);
+					groupes.add(g);
+				
 				}
 
 				else if (codeCase == 9) {
-					grille.getChildren().add(ajouterImage("herbe.png"));
+					
+					g.getChildren().add(new ImageView("file:src/app/ressources/herbe.png"));
+					grille.getChildren().add(g);
+					groupes.add(g);
 					
 				}
 
 				else if (codeCase == 10) {
-					grille.getChildren().add(ajouterImage("bois.png"));
+					
+					g.getChildren().add(new ImageView("file:src/app/ressources/roche.png"));
+					grille.getChildren().add(g);
+					groupes.add(g);
+				}
+				
+				else if (codeCase == 11) {
+					g.getChildren().add(new ImageView("file:src/app/ressources/nether.png"));
+					grille.getChildren().add(g);
+					groupes.add(g);
 				}
 			}
 
@@ -73,14 +112,17 @@ public class Controleur implements Initializable {
 
 	}
 	
-	
-
 	private ImageView ajouterImage(String URL) {
-		Image tile = new Image("/"+URL);
+		Image tile = new Image("app/ressources/"+URL);
 		ImageView resu = new ImageView();
 		resu.setImage(tile);
 		return resu;
 
 	}
+	
+	
+	
+	
+	
 
 }
