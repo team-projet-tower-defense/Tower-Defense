@@ -2,9 +2,13 @@ package app.modele;
 
 import java.util.Random;
 
+import javafx.scene.Group;
+
 public class Ennemi {
 	
 	private int x,y;
+	
+	private Group groupe;
 	
 	private int dx,dy ;// direction 
 	
@@ -29,6 +33,14 @@ public class Ennemi {
 
 	public  void setX(int n){
 		x=n;
+	}
+	
+	public void setGroup(Group g) {
+		groupe=g;
+	}
+	
+	public Group getGroup() {
+		return groupe;
 	}
 
 	public  int getY() {

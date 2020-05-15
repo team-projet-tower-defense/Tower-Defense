@@ -14,10 +14,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
+
 import javafx.scene.layout.TilePane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+
 
 public class Controleur implements Initializable {
 
@@ -38,16 +37,37 @@ public class Controleur implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		afficherCarte();
+		ennemi = ajouterEnnemi();
 		
-		creerSprite(ajouterEnnemi());
+		creerSprite(ennemi);
+		mouvement(ennemi);
+		afficherCarte();
 		//
 	}
 	
 	public Ennemi ajouterEnnemi() {
-		Ennemi e= new Ennemi(100,5,2,10,10);
+		Ennemi e= new Ennemi(100,5,2,25,10);
 		return e;
 		
 	}
+	
+	public void mouvement(Ennemi e) {
+		
+		e.setX(26);
+		Group nvGroupe= groupes.get(e.getX());
+		e.setGroup(groupes.get(e.getX()));
+		
+		
+		
+		
+		
+			
+	}
+			
+			
+			
+		
+	
 	
 	private void creerSprite(Ennemi e) {
 		
@@ -61,12 +81,7 @@ public class Controleur implements Initializable {
 		//group
 		//blend mode multiply
 		//grille.getChildren().add(resu);
-		//(x*20+y)
-		
-		
-		
-		
-		
+		//(x*20+y)	
 	}
 
 	private void afficherCarte() {
