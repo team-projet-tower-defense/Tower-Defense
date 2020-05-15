@@ -3,12 +3,15 @@ package app.modele;
 import java.util.Random;
 
 import javafx.scene.Group;
+import javafx.scene.image.ImageView;
 
 public class Ennemi {
 	
 	private int x,y;
 	
 	private Group groupe;
+	
+	private ImageView sprite;
 	
 	private int dx,dy ;// direction 
 	
@@ -39,6 +42,14 @@ public class Ennemi {
 		groupe=g;
 	}
 	
+	public void setSprite(ImageView s) {
+		sprite=s;
+	}
+	
+	public ImageView getSprite() {
+		return sprite;
+	}
+	
 	public Group getGroup() {
 		return groupe;
 	}
@@ -48,41 +59,6 @@ public class Ennemi {
 	}
 	public  void setY(int n){
 		y=n;
-	}
-	
-	public void seDeplace(){
-		// 20% de chance de changer de direction
-		// if(Math.random()*100< pourentageRepro )
-		//if(reussitProba(20)) {
-			//tirerDirection();
-		//}
-		int nposX=this.getX()+(this.vitesse*dx);
-		int nposY=this.getY()+(this.vitesse*dy);
-		//while(!env.dansTerrain(nposX, nposY)){
-			tirerDirection();
-			nposX=this.getX()+(this.vitesse*dx);
-			nposY=this.getY()+(this.vitesse*dy);
-		//}
-		this.x=nposX;
-		this.y=nposY;		
-	}
-	
-	private void tirerDirection(){
-		Random random=new Random();
-		int randomInt = random.nextInt(3);
-		dx=randomInt-1;
-		if(dx==0){
-			randomInt=random.nextInt(2)-1;
-			if(randomInt==0){
-				dy=-1;
-			}
-			else{
-				dy=1;
-			}
-		}
-		else{
-			dy=random.nextInt(3)-1;
-		}
 	}
 	
 	public void decrementerPv(int n) {

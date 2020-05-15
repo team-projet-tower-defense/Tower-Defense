@@ -7,7 +7,7 @@ public class Carte {
 	private int largeur=20;
 	private int hauteur=15;
 	
-	public static int[][] terrain = {{10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10}, 
+	private int[][] terrain = {{10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10}, 
 			 {10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10},
 			 {10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10}, 
 			 {10, 9, 9, 9, 9, 7, 7, 7, 7, 7, 7, 9, 9, 7, 7, 7, 7, 7, 7, 7}, 
@@ -28,19 +28,10 @@ public class Carte {
 		
 	}
 	
-	public boolean dansTerrain(int x, int y){
-		return ((1 <= x && x<this.largeur-1 && 1<=y && y< this.hauteur-1)&& getTerrain()[x][y]!=10);
-	}
 
 	public int getLargeur() {
 		return largeur;
 	}
-	
-	public static int[][] getTerrain(){
-		return terrain;
-	}
-
-	
 
 	public int getHauteur() {
 		return hauteur;
