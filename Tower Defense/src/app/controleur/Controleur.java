@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import app.modele.Carte;
 import app.modele.Ennemi;
 import app.modele.Tour;
+import app.vue.CarteVue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,7 +25,7 @@ public class Controleur implements Initializable {
 
 	
 	
-	private Carte terrain;
+	private Carte carte;
 	
 	private Ennemi ennemi;
 	
@@ -33,12 +34,13 @@ public class Controleur implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		terrain= new Carte();
-		//terrainVue = new CarteVue(Carte, TilePane)
-		//terrainVue.afficherCarte()
+		carte= new Carte();
+		CarteVue terrainVue = new CarteVue(carte, grille);
+		ArrayList<Group> groupes = terrainVue.getGroupes();
+		//terrainVue.afficherCarte();
 		
 		afficherCarte();
-		ennemi = new Ennemi(100,5,2,25,10);
+		ennemi = new Ennemi(100,5,2,1,10);
 		creerSprite(ennemi);
 		mouvement(ennemi);
 
@@ -84,40 +86,33 @@ public class Controleur implements Initializable {
 	 */
 	private void afficherCarte() {
 
-		for (int x = 0; x < terrain.getLargeur(); x++) {
-			for (int y = 0; y < terrain.getHauteur(); y++) {
+		for (int x = 0; x < carte.getHauteur(); x++) {
+			for (int y = 0; y < carte.getLargeur(); y++) {
 				
-				Group g = new Group();
-				int codeCase = terrain.getCase(x, y);
+				
+				int codeCase = carte.getCase(x, y);
 
 				if (codeCase == 7) {
 					
 					
-					g.getChildren().add(new ImageView("file:src/app/ressources/sable.png"));// à mettre dans vue
-					grille.getChildren().add(g);
-					groupes.add(g);
+					ajouterImage("sable.png");// à mettre dans vue
+					
 				
 				}
 
 				else if (codeCase == 9) {
 					
-					g.getChildren().add(new ImageView("file:src/app/ressources/herbe.png"));
-					grille.getChildren().add(g);
-					groupes.add(g);
+					ajouterImage("herbe.png");
 					
 				}
 
 				else if (codeCase == 10) {
 					
-					g.getChildren().add(new ImageView("file:src/app/ressources/roche.png"));
-					grille.getChildren().add(g);
-					groupes.add(g);
+					ajouterImage("roche.png");
 				}
 				
 				else if (codeCase == 11) {
-					g.getChildren().add(new ImageView("file:src/app/ressources/nether.png"));
-					grille.getChildren().add(g);
-					groupes.add(g);
+					ajouterImage("nether.png");
 				}
 			}
 
@@ -125,11 +120,11 @@ public class Controleur implements Initializable {
 
 	}
 	
-	private ImageView ajouterImage(String URL) {
-		Image tile = new Image("app/ressources/"+URL);
-		ImageView resu = new ImageView();
-		resu.setImage(tile);
-		return resu;
+	private void ajouterImage(String URL) {
+		Group g = new Group();
+		g.getChildren().add(new ImageView("file:src/app/ressources/"+URL));
+		grille.getChildren().add(g);
+		groupes.add(g);
 
 	}
 	
@@ -139,3 +134,17 @@ public class Controleur implements Initializable {
 	
 
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
