@@ -4,9 +4,19 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
+
+import app.modele.Archer;
 import app.modele.Carte;
+import app.modele.Catapulte;
+import app.modele.Chevalier;
 import app.modele.Ennemi;
+import app.modele.Mage;
+import app.modele.Pigman;
+import app.modele.Sorci√®re;
+import app.modele.Squelette;
 import app.modele.Tour;
+import app.modele.Wither;
+import app.modele.Zombie;
 import app.vue.CarteVue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,11 +33,13 @@ public class Controleur implements Initializable {
 	@FXML
 	private TilePane grille;
 
-	
+	private CarteVue terrainVue;
 	
 	private Carte carte;
 	
 	private Ennemi ennemi;
+	
+	private Tour tour;
 	
 	private ArrayList<Group> groupes = new ArrayList() ;
 
@@ -35,15 +47,18 @@ public class Controleur implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		carte= new Carte();
-		CarteVue terrainVue = new CarteVue(carte, grille);
-		ArrayList<Group> groupes = terrainVue.getGroupes();
-		//terrainVue.afficherCarte();
+		terrainVue = new CarteVue(carte, grille, groupes);
+		terrainVue.afficherCarte();
 		
-		afficherCarte();
-		ennemi = new Ennemi(100,5,2,1,10);
-		creerSprite(ennemi);
-		mouvement(ennemi);
-
+		//afficherCarte();
+	ennemi = new Pigman("Pigman",300,40,0,0,0);
+	creerSpriteEnnemie(ennemi);
+	
+	tour = new Archer("Archer",400,40,0,0);
+	creerSpriteTour(tour);
+	
+	//sssmouvement(ennemi);
+	
 	}
 	
 	
@@ -63,6 +78,7 @@ public class Controleur implements Initializable {
 		e.getGroup().getChildren().remove(e.getSprite());
 		
 		e.setX(e.getX()+nbRandom);
+		e.setY(e.getY()+nbRandom);
 		
 		
 		
@@ -70,19 +86,96 @@ public class Controleur implements Initializable {
 				
 	}
 
-	private void creerSprite(Ennemi e) {
+	private void creerSpriteEnnemie(Ennemi e) {
 		
 		Group g = groupes.get(e.getX());
 		
+		ImageView imageE;
 		
-		e.setSprite(new ImageView("file:src/app/ressources/sorciere.png"));
-		g.getChildren().add(e.getSprite());
+		
+		imageE = attribuerImageEnnemi(e);
+		
+		
+		e.setSprite(imageE);
+		g.getChildren().add(imageE);
 		e.setGroup(g);
 		
-		//(x*20+y)	
+	
 	}
+	
+	private void creerSpriteTour(Tour t) {
+		
+		Group g = groupes.get(t.getX());
+		
+		
+		ImageView imageD;
+		
+		imageD = attribuerImageTour(t);
+		
+		
+		t.setSprite(imageD);
+		g.getChildren().add(imageD);
+		t.setGroup(g);
+		
+	
+	}
+	
+	public ImageView attribuerImageEnnemi(Ennemi e) {
+		
+	ImageView imageEnnemi = null ; 
+	
+	if	(e instanceof Sorci√®re) {
+		imageEnnemi = new ImageView("file:src/app/ressources/sorciere.png");
+	}
+	
+	else if	(e instanceof Zombie) {
+		imageEnnemi = new ImageView("file:src/app/ressources/zombie.png");
+	}
+	
+	else if	(e instanceof Pigman) {
+		imageEnnemi = new ImageView("file:src/app/ressources/pigman.png");
+	}
+	
+	else if	(e instanceof Squelette) {
+		imageEnnemi = new ImageView("file:src/app/ressources/squelette.png");
+	}
+	
+	else if	(e instanceof Wither) {
+		imageEnnemi = new ImageView("file:src/app/ressources/wither.png");
+	}
+	
+	
+	
+	return imageEnnemi;
+		
+	}
+	
+	public ImageView attribuerImageTour(Tour t) {
+		
+		ImageView imageDefense = null ; 
+		
+		if	(t instanceof Archer) {
+			imageDefense = new ImageView("file:src/app/ressources/archer.png");
+		}
+		
+		else if	(t instanceof Catapulte) {
+			imageDefense = new ImageView("file:src/app/ressources/catapulte.png");
+		}
+		
+		else if	(t instanceof Mage) {
+			imageDefense = new ImageView("file:src/app/ressources/mage.png");
+		}
+		
+		else if	(t instanceof Chevalier) {
+			imageDefense = new ImageView("file:src/app/ressources/chevalier.png");
+		}
+		
+		return imageDefense;
+			
+		}
+	
 	/*
-	 * CrÈer dans le package vue, une Classe CarteVue qui affiche la carte, priavate Carte, TilePane initialisÈs dans le 
+	 * Cr√©er dans le package vue, une Classe CarteVue qui affiche la carte, priavate Carte, TilePane initialis√©s dans le 
 	 */
 	private void afficherCarte() {
 
@@ -95,7 +188,7 @@ public class Controleur implements Initializable {
 				if (codeCase == 7) {
 					
 					
-					ajouterImage("sable.png");// ‡ mettre dans vue
+					ajouterImage("sable.png");// √† mettre dans vue
 					
 				
 				}
@@ -128,23 +221,11 @@ public class Controleur implements Initializable {
 
 	}
 	
+
+	
 	
 	
 	
 	
 
 }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
