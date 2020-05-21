@@ -1,6 +1,9 @@
 package app.modele;
 
-public class Tour {
+import javafx.scene.Group;
+import javafx.scene.image.ImageView;
+
+public abstract class Tour {
 	
 	private int pv;
 	
@@ -8,12 +11,21 @@ public class Tour {
 	
 	private int x,y;
 	
-	public Tour(int p, int a, int x, int y) {
+	private String nomDefense;
+	
+	private Group groupe;
+	
+	private ImageView sprite;
+	
+	public Tour(String nomDefense, int p, int a, int x, int y) {
+		nomDefense=nomDefense;
 		pv=p;
 		attaque=a;
 		this.x=x;
 		this.y=y;
 	}
+	
+	public abstract void agit();
 	
 	public int attaque(Ennemi e) {
 		return attaque;
@@ -38,4 +50,19 @@ public class Tour {
 		return y;
 	}
 
+	public void setGroup(Group g) {
+		groupe=g;
+	}
+	
+	public void setSprite(ImageView s) {
+		sprite=s;
+	}
+	
+	public ImageView getSprite() {
+		return sprite;
+	}
+	
+	public Group getGroup() {
+		return groupe;
+	}
 }
