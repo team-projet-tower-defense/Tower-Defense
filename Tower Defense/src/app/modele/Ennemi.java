@@ -2,10 +2,11 @@ package app.modele;
 
 import java.util.Random;
 
+import app.vue.CarteVue;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 
-public class Ennemi {
+public abstract class Ennemi {
 	
 	private int x,y;
 	
@@ -21,16 +22,36 @@ public class Ennemi {
 	
 	private int vitesse;
 	
-	public Ennemi(int p, int a, int v, int x, int y) {
+	private String nomEnnemi;
+	
+	public Ennemi(String nomEnnemi,int p, int a, int v, int x, int y) {
+		
+		nomEnnemi = nomEnnemi;
 		pv=p;
 		attaque=a;
 		vitesse=v;
 		this.x=x;
-		this.y=y;
-		
+		this.y=y;		
 	}
 	
-	public  int getX() {
+	@Override
+	public String toString() {
+		return "Ennemi [x=" + x + ", y=" + y + ", groupe=" + groupe + ", sprite=" + sprite + ", dx=" + dx + ", dy=" + dy
+				+ ", pv=" + pv + ", attaque=" + attaque + ", vitesse=" + vitesse + ", nomEnnemi=" + nomEnnemi + "]";
+	}
+
+	public void butin() {
+		//faire tomber butin 
+	}
+	
+
+	public abstract void agit();
+	
+	public String getString() {
+		return nomEnnemi;
+	}
+	
+	public int getX() {
 		return x;
 	}
 
