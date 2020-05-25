@@ -1,10 +1,23 @@
 package app.controleur;
 
 import java.net.URL;
+import javafx.scene.layout.StackPane;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
-import app.modele.*;
+
+import app.modele.Archer;
+import app.modele.Carte;
+import app.modele.Catapulte;
+import app.modele.Chevalier;
+import app.modele.Ennemi;
+import app.modele.Mage;
+import app.modele.Pigman;
+import app.modele.Sorcière;
+import app.modele.Squelette;
+import app.modele.Tour;
+import app.modele.Wither;
+import app.modele.Zombie;
 import app.vue.CarteVue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,14 +25,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 
 
 public class Controleur implements Initializable {
 
 	@FXML
-	private TilePane grille;
+
 
 	private CarteVue terrainVue;
 	
@@ -29,21 +42,34 @@ public class Controleur implements Initializable {
 	
 	private Tour tour;
 	
-	private ArrayList<Group> groupes = new ArrayList() ;
+	
+	
+	   @FXML
+	    private TilePane tilePane;
+
+	    @FXML
+	    private Pane pane;
+
+	    @FXML
+	    private StackPane stackPane;
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		
 		carte= new Carte();
-		terrainVue = new CarteVue(carte, grille, groupes);
+
+		stackPane.getChildren().addAll(new TilePane(tilePane), new Pane(pane));
+		terrainVue = new CarteVue(carte, tilePane, pane);
+		
 		terrainVue.afficherCarte();
 		
 		//afficherCarte();
-	ennemi = new Pigman("Pigman",300,40,0,0,0);
-	creerSpriteEnnemie(ennemi);
+		ennemi = new Pigman("Pigman",300,40,0,5,5);
 	
-	tour = new Archer("Archer",400,40,0,0);
-	creerSpriteTour(tour);
+	//tour = new Chevalier("Chevalier", 500, 60, 5, 6);
+	//creerSpriteTour(tour);
 	
 	//sssmouvement(ennemi);
 	
@@ -68,15 +94,13 @@ public class Controleur implements Initializable {
 		e.setX(e.getX()+nbRandom);
 		e.setY(e.getY()+nbRandom);
 		
-		
-		
-		groupes.get(e.getX()).getChildren().add(e.getSprite());
+	//	groupes.get(e.getX()).getChildren().add(e.getSprite());
 				
 	}
 
 	private void creerSpriteEnnemie(Ennemi e) {
 		
-		Group g = groupes.get(e.getX());
+	//	Group g = groupes.get(e.getX());
 		
 		ImageView imageE;
 		
@@ -85,15 +109,14 @@ public class Controleur implements Initializable {
 		
 		
 		e.setSprite(imageE);
-		g.getChildren().add(imageE);
-		e.setGroup(g);
-		
+		pane.getChildren().add(imageE);
+	//	e.setGroup(g);	
 	
 	}
 	
 	private void creerSpriteTour(Tour t) {
 		
-		Group g = groupes.get(t.getX());
+	//	Group g = groupes.get(t.getX());
 		
 		
 		ImageView imageD;
@@ -102,8 +125,8 @@ public class Controleur implements Initializable {
 		
 		
 		t.setSprite(imageD);
-		g.getChildren().add(imageD);
-		t.setGroup(g);
+		pane.getChildren().add(imageD);
+	//	t.setGroup(g);
 		
 	
 	}
@@ -112,7 +135,7 @@ public class Controleur implements Initializable {
 		
 	ImageView imageEnnemi = null ; 
 	
-	if	(e instanceof Sorciere) {
+	if	(e instanceof Sorcière) {
 		imageEnnemi = new ImageView("file:src/app/ressources/sorciere.png");
 	}
 	
@@ -124,9 +147,9 @@ public class Controleur implements Initializable {
 		imageEnnemi = new ImageView("file:src/app/ressources/pigman.png");
 	}
 	
-	/*else if	(e instanceof Squelette) {
+	else if	(e instanceof Squelette) {
 		imageEnnemi = new ImageView("file:src/app/ressources/squelette.png");
-	}*/
+	}
 	
 	else if	(e instanceof Wither) {
 		imageEnnemi = new ImageView("file:src/app/ressources/wither.png");
@@ -196,16 +219,13 @@ public class Controleur implements Initializable {
 					ajouterImage("nether.png");
 				}
 			}
-
 		}
-
 	}
 	
 	private void ajouterImage(String URL) {
-		Group g = new Group();
-		g.getChildren().add(new ImageView("file:src/app/ressources/"+URL));
-		grille.getChildren().add(g);
-		groupes.add(g);
+		ImageView g = new ImageView();
+		tilePane.getChildren().add(new ImageView("file:src/app/ressources/"+URL));
+		tilePane.getChildren().add(g);
 
 	}
 	
