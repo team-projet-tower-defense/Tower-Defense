@@ -17,12 +17,13 @@ public abstract class Tour {
 	
 	private ImageView sprite;
 	
-	public Tour(String nomDefense, int p, int a, int x, int y) {
+	public Tour(String nomDefense, int p, int a, int x, int y, ImageView s) {
 		nomDefense=nomDefense;
 		pv=p;
 		attaque=a;
 		this.x=x;
 		this.y=y;
+		sprite=s;
 	}
 	
 	public abstract void agit();
@@ -33,6 +34,10 @@ public abstract class Tour {
 	
 	public void recevoirDegats(int d) {
 		pv-=d;
+	}
+	
+	public ImageView getSprite() {
+		return sprite;
 	}
 	
 	public boolean estEnVie() {
@@ -58,9 +63,6 @@ public abstract class Tour {
 		sprite=s;
 	}
 	
-	public ImageView getSprite() {
-		return sprite;
-	}
 	
 	public Group getGroup() {
 		return groupe;

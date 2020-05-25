@@ -2,22 +2,10 @@ package app.controleur;
 
 import java.net.URL;
 import javafx.scene.layout.StackPane;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-import app.modele.Archer;
-import app.modele.Carte;
-import app.modele.Catapulte;
-import app.modele.Chevalier;
-import app.modele.Ennemi;
-import app.modele.Mage;
-import app.modele.Pigman;
-import app.modele.Sorcière;
-import app.modele.Squelette;
-import app.modele.Tour;
-import app.modele.Wither;
-import app.modele.Zombie;
+import app.modele.*;
 import app.vue.CarteVue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,9 +18,6 @@ import javafx.scene.layout.TilePane;
 
 
 public class Controleur implements Initializable {
-
-	@FXML
-
 
 	private CarteVue terrainVue;
 	
@@ -59,13 +44,12 @@ public class Controleur implements Initializable {
 		
 		
 		carte= new Carte();
-
-		stackPane.getChildren().addAll(new TilePane(tilePane), new Pane(pane));
+		tilePane = new TilePane();
+		pane = new Pane();
+		stackPane = new StackPane();
+		stackPane.getChildren().addAll(tilePane, pane);
 		terrainVue = new CarteVue(carte, tilePane, pane);
-		
 		terrainVue.afficherCarte();
-		
-		//afficherCarte();
 		ennemi = new Pigman("Pigman",300,40,0,5,5);
 	
 	//tour = new Chevalier("Chevalier", 500, 60, 5, 6);
@@ -99,141 +83,11 @@ public class Controleur implements Initializable {
 	}
 
 	private void creerSpriteEnnemie(Ennemi e) {
-		
-	//	Group g = groupes.get(e.getX());
-		
-		ImageView imageE;
-		
-		
-		imageE = attribuerImageEnnemi(e);
-		
-		
-		e.setSprite(imageE);
-		pane.getChildren().add(imageE);
-	//	e.setGroup(g);	
-	
+		pane.getChildren().add(e.getSprite());
 	}
 	
 	private void creerSpriteTour(Tour t) {
-		
-	//	Group g = groupes.get(t.getX());
-		
-		
-		ImageView imageD;
-		
-		imageD = attribuerImageTour(t);
-		
-		
-		t.setSprite(imageD);
-		pane.getChildren().add(imageD);
-	//	t.setGroup(g);
-		
-	
+		pane.getChildren().add(t.getSprite());
 	}
 	
-	public ImageView attribuerImageEnnemi(Ennemi e) {
-		
-	ImageView imageEnnemi = null ; 
-	
-	if	(e instanceof Sorcière) {
-		imageEnnemi = new ImageView("file:src/app/ressources/sorciere.png");
-	}
-	
-	else if	(e instanceof Zombie) {
-		imageEnnemi = new ImageView("file:src/app/ressources/zombie.png");
-	}
-	
-	else if	(e instanceof Pigman) {
-		imageEnnemi = new ImageView("file:src/app/ressources/pigman.png");
-	}
-	
-	else if	(e instanceof Squelette) {
-		imageEnnemi = new ImageView("file:src/app/ressources/squelette.png");
-	}
-	
-	else if	(e instanceof Wither) {
-		imageEnnemi = new ImageView("file:src/app/ressources/wither.png");
-	}
-	
-	
-	
-	return imageEnnemi;
-		
-	}
-	
-	public ImageView attribuerImageTour(Tour t) {
-		
-		ImageView imageDefense = null ; 
-		
-		if	(t instanceof Archer) {
-			imageDefense = new ImageView("file:src/app/ressources/archer.png");
-		}
-		
-		else if	(t instanceof Catapulte) {
-			imageDefense = new ImageView("file:src/app/ressources/catapulte.png");
-		}
-		
-		else if	(t instanceof Mage) {
-			imageDefense = new ImageView("file:src/app/ressources/mage.png");
-		}
-		
-		else if	(t instanceof Chevalier) {
-			imageDefense = new ImageView("file:src/app/ressources/chevalier.png");
-		}
-		
-		return imageDefense;
-			
-		}
-	
-	/*
-	 * Créer dans le package vue, une Classe CarteVue qui affiche la carte, priavate Carte, TilePane initialisés dans le 
-	 */
-	private void afficherCarte() {
-
-		for (int x = 0; x < carte.getHauteur(); x++) {
-			for (int y = 0; y < carte.getLargeur(); y++) {
-				
-				
-				int codeCase = carte.getCase(x, y);
-
-				if (codeCase == 7) {
-					
-					
-					ajouterImage("sable.png");// à mettre dans vue
-					
-				
-				}
-
-				else if (codeCase == 9) {
-					
-					ajouterImage("herbe.png");
-					
-				}
-
-				else if (codeCase == 10) {
-					
-					ajouterImage("roche.png");
-				}
-				
-				else if (codeCase == 11) {
-					ajouterImage("nether.png");
-				}
-			}
-		}
-	}
-	
-	private void ajouterImage(String URL) {
-		ImageView g = new ImageView();
-		tilePane.getChildren().add(new ImageView("file:src/app/ressources/"+URL));
-		tilePane.getChildren().add(g);
-
-	}
-	
-
-	
-	
-	
-	
-	
-
 }

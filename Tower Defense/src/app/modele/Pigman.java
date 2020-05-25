@@ -1,9 +1,11 @@
 package app.modele;
 
+import javafx.scene.image.ImageView;
+
 public class Pigman extends Ennemi{
 
 	public Pigman(String nomEnnemi, int p, int a, int v, int x, int y) {
-		super("Pigman",300, 40, v, x, y);
+		super(300, 40, v, x, y, new ImageView("file:src/app/ressources/pigman.png"));
 		// TODO Auto-generated constructor stub
 	}
 

@@ -17,15 +17,13 @@ public class CarteVue {
 	private TilePane tilePane ;
 	
 	private Pane pane;
-	
-	private ImageView iv ;
 	 
 	private StackPane stackPane;
 	
 	public CarteVue(Carte c, TilePane g, Pane p) {
 		
 		carte= c;
-		tilePane=  new TilePane();
+		tilePane=  g;
 		pane=p ; 
 		
 	}

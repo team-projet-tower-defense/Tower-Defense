@@ -1,9 +1,11 @@
 package app.modele;
 
+import javafx.scene.image.ImageView;
+
 public class Sorciere extends Ennemi{
 
 	public Sorciere(String nomEnnemi,int p, int a, int v, int x, int y) {
-		super("Sorcière",400, 30, v, x, y);
+		super(400, 30, v, x, y,new ImageView("file:src/app/ressources/sorciere.png"));
 		// TODO Auto-generated constructor stub
 	}
 

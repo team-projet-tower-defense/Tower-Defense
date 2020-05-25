@@ -22,22 +22,23 @@ public abstract class Ennemi {
 	
 	private int vitesse;
 	
-	private String nomEnnemi;
 	
-	public Ennemi(String nomEnnemi,int p, int a, int v, int x, int y) {
+	public Ennemi(int p, int a, int v, int x, int y, ImageView s) {
 		
-		nomEnnemi = nomEnnemi;
+		
 		pv=p;
 		attaque=a;
 		vitesse=v;
 		this.x=x;
-		this.y=y;		
+		this.y=y;
+		sprite=s;
+		
 	}
 	
 	@Override
 	public String toString() {
-		return "Ennemi [x=" + x + ", y=" + y + ", groupe=" + groupe + ", sprite=" + sprite + ", dx=" + dx + ", dy=" + dy
-				+ ", pv=" + pv + ", attaque=" + attaque + ", vitesse=" + vitesse + ", nomEnnemi=" + nomEnnemi + "]";
+		return "Ennemi [x=" + x + ", y=" + y + ", groupe=" + groupe + ", dx=" + dx + ", dy=" + dy
+				+ ", pv=" + pv + ", attaque=" + attaque + ", vitesse=" + vitesse + "]";
 	}
 
 	public void butin() {
@@ -47,9 +48,6 @@ public abstract class Ennemi {
 
 	public abstract void agit();
 	
-	public String getString() {
-		return nomEnnemi;
-	}
 	
 	public int getX() {
 		return x;
