@@ -4,19 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
-
-import app.modele.Archer;
-import app.modele.Carte;
-import app.modele.Catapulte;
-import app.modele.Chevalier;
-import app.modele.Ennemi;
-import app.modele.Mage;
-import app.modele.Pigman;
-import app.modele.Sorcière;
-import app.modele.Squelette;
-import app.modele.Tour;
-import app.modele.Wither;
-import app.modele.Zombie;
+import app.modele.*;
 import app.vue.CarteVue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -124,7 +112,7 @@ public class Controleur implements Initializable {
 		
 	ImageView imageEnnemi = null ; 
 	
-	if	(e instanceof Sorcière) {
+	if	(e instanceof Sorciere) {
 		imageEnnemi = new ImageView("file:src/app/ressources/sorciere.png");
 	}
 	
@@ -136,9 +124,9 @@ public class Controleur implements Initializable {
 		imageEnnemi = new ImageView("file:src/app/ressources/pigman.png");
 	}
 	
-	else if	(e instanceof Squelette) {
+	/*else if	(e instanceof Squelette) {
 		imageEnnemi = new ImageView("file:src/app/ressources/squelette.png");
-	}
+	}*/
 	
 	else if	(e instanceof Wither) {
 		imageEnnemi = new ImageView("file:src/app/ressources/wither.png");

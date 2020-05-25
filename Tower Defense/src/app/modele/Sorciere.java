@@ -1,9 +1,9 @@
 package app.modele;
 
-public class Sorcière extends Ennemi{
+public class Sorciere extends Ennemi{
 
-	public Sorcière(String nomEnnemi,int p, int a, int v, int x, int y) {
-		super("Sorcière",400, 30, v, x, y);
+	public Sorciere(String nomEnnemi,int p, int a, int v, int x, int y) {
+		super("Sorci�re",400, 30, v, x, y);
 		// TODO Auto-generated constructor stub
 	}
 
