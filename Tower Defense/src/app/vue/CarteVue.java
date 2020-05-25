@@ -6,21 +6,27 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 
 public class CarteVue {
 	
 	private Carte carte;
 	
-	private TilePane grille;
+	private TilePane tilePane ;
 	
-	private ArrayList<Group> groupes;
+	private Pane pane;
 	
-	public CarteVue(Carte t, TilePane g) {
+	private ImageView iv ;
+	 
+	private StackPane stackPane;
+	
+	public CarteVue(Carte c, TilePane g, Pane p) {
 		
-		groupes = new ArrayList();
-		carte=new Carte();
-		grille=g;
+		carte= c;
+		tilePane=  new TilePane();
+		pane=p ; 
 		
 	}
 	
@@ -34,10 +40,8 @@ public class CarteVue {
 
 				if (codeCase == 7) {
 					
+					ajouterImage("sable.png");// Ã  mettre dans vue
 					
-					ajouterImage("sable.png");// à mettre dans vue
-					
-				
 				}
 
 				else if (codeCase == 9) {
@@ -60,16 +64,14 @@ public class CarteVue {
 
 	}
 	
-	public ArrayList<Group> getGroupes(){
-		return groupes;
-	}
+	
 	
 	private void ajouterImage(String URL) {
-		Group g = new Group();
-		g.getChildren().add(new ImageView("file:src/app/ressources/"+URL));
-		grille.getChildren().add(g);
-		groupes.add(g);
-
+		
+	//	TilePane tilePane =
+		
+		tilePane.getChildren().add(new ImageView("file:src/app/ressources/"+URL));
+		
 	}
 
 }
