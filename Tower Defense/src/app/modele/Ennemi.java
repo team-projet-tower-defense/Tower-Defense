@@ -10,8 +10,6 @@ public abstract class Ennemi {
 	
 	private int x,y;
 	
-	private Group groupe;
-	
 	private ImageView sprite;
 	
 	private int dx,dy ;// direction 
@@ -37,7 +35,7 @@ public abstract class Ennemi {
 	
 	@Override
 	public String toString() {
-		return "Ennemi [x=" + x + ", y=" + y + ", groupe=" + groupe + ", dx=" + dx + ", dy=" + dy
+		return "Ennemi [x=" + x + ", y=" + y + ", dx=" + dx + ", dy=" + dy
 				+ ", pv=" + pv + ", attaque=" + attaque + ", vitesse=" + vitesse + "]";
 	}
 
@@ -57,20 +55,12 @@ public abstract class Ennemi {
 		x=n;
 	}
 	
-	public void setGroup(Group g) {
-		groupe=g;
-	}
-	
 	public void setSprite(ImageView s) {
 		sprite=s;
 	}
 	
 	public ImageView getSprite() {
 		return sprite;
-	}
-	
-	public Group getGroup() {
-		return groupe;
 	}
 
 	public  int getY() {

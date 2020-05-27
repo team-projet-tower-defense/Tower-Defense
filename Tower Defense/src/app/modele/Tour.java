@@ -11,8 +11,6 @@ public abstract class Tour {
 	
 	private int x,y;
 	
-	private Group groupe;
-	
 	private ImageView sprite;
 	
 	public Tour(int p, int a, int x, int y, ImageView s) {
@@ -52,17 +50,9 @@ public abstract class Tour {
 	public int getY() {
 		return y;
 	}
-
-	public void setGroup(Group g) {
-		groupe=g;
-	}
 	
 	public void setSprite(ImageView s) {
 		sprite=s;
 	}
-	
-	
-	public Group getGroup() {
-		return groupe;
-	}
+
 }

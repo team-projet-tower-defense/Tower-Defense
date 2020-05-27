@@ -34,8 +34,6 @@ public class Controleur implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 				
 		carte= new Carte();
-		//stackPane.getChildren().addAll(pane);
-		//stackPane.getChildren().add(tilePane);
 		terrainVue = new CarteVue(carte, tilePane, pane);
 		terrainVue.afficherCarte();
 		ennemi = new Pigman(300,40,0,5,5);
@@ -62,7 +60,7 @@ public class Controleur implements Initializable {
 		
 		int nbRandom = random.nextInt(10);
 		
-		e.getGroup().getChildren().remove(e.getSprite());
+		//e.getGroup().getChildren().remove(e.getSprite());
 		
 		e.setX(e.getX()+nbRandom);
 		e.setY(e.getY()+nbRandom);
