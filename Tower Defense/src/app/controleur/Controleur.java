@@ -26,17 +26,15 @@ public class Controleur implements Initializable {
 	private Ennemi ennemi;
 	
 	private Tour tour;
-	
-	
-	
-	   @FXML
-	    private TilePane tilePane;
+	   
+	@FXML
+	private TilePane tilePane;
 
-	    @FXML
-	    private Pane pane;
+	//@FXML
+	//private Pane pane;
 
-	    @FXML
-	    private StackPane stackPane;
+	//@FXML
+	//private StackPane stackPane;
 	
 
 	@Override
@@ -45,12 +43,13 @@ public class Controleur implements Initializable {
 		
 		carte= new Carte();
 		tilePane = new TilePane();
-		pane = new Pane();
-		stackPane = new StackPane();
-		stackPane.getChildren().addAll(tilePane, pane);
-		terrainVue = new CarteVue(carte, tilePane, pane);
+		//pane = new Pane();
+		//stackPane = new StackPane();
+		//stackPane.getChildren().add(tilePane/*, pane*/);
+		terrainVue = new CarteVue(carte, tilePane/*, pane*/);
 		terrainVue.afficherCarte();
 		ennemi = new Pigman("Pigman",300,40,0,5,5);
+		creerSpriteEnnemie(ennemi);
 	
 	//tour = new Chevalier("Chevalier", 500, 60, 5, 6);
 	//creerSpriteTour(tour);
@@ -83,11 +82,11 @@ public class Controleur implements Initializable {
 	}
 
 	private void creerSpriteEnnemie(Ennemi e) {
-		pane.getChildren().add(e.getSprite());
+		tilePane.getChildren().add(e.getSprite());
 	}
 	
 	private void creerSpriteTour(Tour t) {
-		pane.getChildren().add(t.getSprite());
+		//pane.getChildren().add(t.getSprite());
 	}
 	
 }

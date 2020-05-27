@@ -11,14 +11,12 @@ public abstract class Tour {
 	
 	private int x,y;
 	
-	private String nomDefense;
-	
 	private Group groupe;
 	
 	private ImageView sprite;
 	
-	public Tour(String nomDefense, int p, int a, int x, int y, ImageView s) {
-		nomDefense=nomDefense;
+	public Tour(int p, int a, int x, int y, ImageView s) {
+		
 		pv=p;
 		attaque=a;
 		this.x=x;

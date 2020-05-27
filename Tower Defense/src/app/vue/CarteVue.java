@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.shape.Circle;
 
 public class CarteVue {
 	
@@ -16,15 +17,15 @@ public class CarteVue {
 	
 	private TilePane tilePane ;
 	
-	private Pane pane;
+	//private Pane pane;
 	 
 	private StackPane stackPane;
 	
-	public CarteVue(Carte c, TilePane g, Pane p) {
+	public CarteVue(Carte c, TilePane g/*, Pane p*/) {
 		
 		carte= c;
 		tilePane=  g;
-		pane=p ; 
+		//pane=p ; 
 		
 	}
 	
@@ -38,7 +39,7 @@ public class CarteVue {
 
 				if (codeCase == 7) {
 					
-					ajouterImage("sable.png");// à mettre dans vue
+					ajouterImage("sable.png");
 					
 				}
 
@@ -65,8 +66,6 @@ public class CarteVue {
 	
 	
 	private void ajouterImage(String URL) {
-		
-	//	TilePane tilePane =
 		
 		tilePane.getChildren().add(new ImageView("file:src/app/ressources/"+URL));
 		
