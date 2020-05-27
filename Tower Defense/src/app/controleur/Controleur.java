@@ -4,14 +4,11 @@ import java.net.URL;
 import javafx.scene.layout.StackPane;
 import java.util.Random;
 import java.util.ResourceBundle;
-
 import app.modele.*;
-import app.vue.CarteVue;
+import app.vue.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
@@ -28,28 +25,21 @@ public class Controleur implements Initializable {
 	private Tour tour;
 	   
 	@FXML
-	private TilePane tilePane;
+    private TilePane tilePane;
 
-	//@FXML
-	//private Pane pane;
-
-	//@FXML
-	//private StackPane stackPane;
+	@FXML
+	private Pane pane;
 	
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		
+				
 		carte= new Carte();
-		tilePane = new TilePane();
-		//pane = new Pane();
-		//stackPane = new StackPane();
-		//stackPane.getChildren().add(tilePane/*, pane*/);
-		terrainVue = new CarteVue(carte, tilePane/*, pane*/);
+		//stackPane.getChildren().addAll(pane);
+		//stackPane.getChildren().add(tilePane);
+		terrainVue = new CarteVue(carte, tilePane, pane);
 		terrainVue.afficherCarte();
-		ennemi = new Pigman("Pigman",300,40,0,5,5);
-		creerSpriteEnnemie(ennemi);
+		ennemi = new Pigman(300,40,0,5,5);
+		creerSpriteEnnemi(ennemi);
 	
 	//tour = new Chevalier("Chevalier", 500, 60, 5, 6);
 	//creerSpriteTour(tour);
@@ -81,8 +71,8 @@ public class Controleur implements Initializable {
 				
 	}
 
-	private void creerSpriteEnnemie(Ennemi e) {
-		tilePane.getChildren().add(e.getSprite());
+	private void creerSpriteEnnemi(Ennemi e) {
+		pane.getChildren().add(e.getSprite());
 	}
 	
 	private void creerSpriteTour(Tour t) {

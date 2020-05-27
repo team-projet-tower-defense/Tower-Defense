@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class CarteVue {
@@ -17,15 +18,15 @@ public class CarteVue {
 	
 	private TilePane tilePane ;
 	
-	//private Pane pane;
+	private Pane pane;
 	 
-	private StackPane stackPane;
+	//private StackPane stackPane;
 	
-	public CarteVue(Carte c, TilePane g/*, Pane p*/) {
+	public CarteVue(Carte c, TilePane g/*, Pane p*/, Pane p) {
 		
 		carte= c;
 		tilePane=  g;
-		//pane=p ; 
+		pane=p ; 
 		
 	}
 	

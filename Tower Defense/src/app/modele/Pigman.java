@@ -4,7 +4,7 @@ import javafx.scene.image.ImageView;
 
 public class Pigman extends Ennemi{
 
-	public Pigman(String nomEnnemi, int p, int a, int v, int x, int y) {
+	public Pigman(int p, int a, int v, int x, int y) {
 		super(300, 40, v, x, y, new ImageView("file:src/app/ressources/pigman.png"));
 		// TODO Auto-generated constructor stub
 	}
