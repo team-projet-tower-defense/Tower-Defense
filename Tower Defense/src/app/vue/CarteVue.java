@@ -16,17 +16,13 @@ public class CarteVue {
 	
 	private Carte carte;
 	
-	private TilePane tilePane ;
+	private TilePane decor ;
 	
-	private Pane pane;
-	 
-	//private StackPane stackPane;
-	
-	public CarteVue(Carte c, TilePane g/*, Pane p*/, Pane p) {
+	public CarteVue(Carte c, TilePane d) {
 		
 		carte= c;
-		tilePane=  g;
-		pane=p ; 
+		decor= d;
+	
 		
 	}
 	
@@ -68,7 +64,7 @@ public class CarteVue {
 	
 	private void ajouterImage(String URL) {
 		
-		tilePane.getChildren().add(new ImageView("file:src/app/ressources/"+URL));
+		decor.getChildren().add(new ImageView("file:src/app/ressources/"+URL));
 		
 	}
 

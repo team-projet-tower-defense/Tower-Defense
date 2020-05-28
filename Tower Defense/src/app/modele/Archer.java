@@ -4,7 +4,7 @@ import javafx.scene.image.ImageView;
 
 public class Archer extends Tour {
 
-	public Archer( int p, int a, int x, int y) {
+	public Archer(int x, int y) {
 		super(400, 40, x, y,new ImageView("file:src/app/ressources/archer.png"));
 		// TODO Auto-generated constructor stub
 	}

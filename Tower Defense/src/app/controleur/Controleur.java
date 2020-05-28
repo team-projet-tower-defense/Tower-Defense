@@ -1,7 +1,6 @@
 package app.controleur;
 
 import java.net.URL;
-import javafx.scene.layout.StackPane;
 import java.util.Random;
 import java.util.ResourceBundle;
 import app.modele.*;
@@ -22,23 +21,36 @@ public class Controleur implements Initializable {
 	
 	private Ennemi ennemi;
 	
-	private Tour tour;
+	//private Tour tour;
+	
+	//private boolean running;
 	   
 	@FXML
-    private TilePane tilePane;
+    private TilePane decor;
 
 	@FXML
 	private Pane pane;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-				
+		
+		//running=true;
 		carte= new Carte();
-		terrainVue = new CarteVue(carte, tilePane, pane);
+		terrainVue = new CarteVue(carte, decor);
 		terrainVue.afficherCarte();
-		ennemi = new Pigman(300,40,0,5,5);
+		ennemi = new Sorciere(5,5);
 		creerSpriteEnnemi(ennemi);
-	
+		for(int i =0; i <10; i++) {
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			mouvement(ennemi);
+			System.out.println("x: " + ennemi.getX() + " y: " + ennemi.getY());
+		}
+		
 	//tour = new Chevalier("Chevalier", 500, 60, 5, 6);
 	//creerSpriteTour(tour);
 	
@@ -54,22 +66,39 @@ public class Controleur implements Initializable {
 	}
 	*/
 	
-	public void mouvement(Ennemi e) {
+	private void mouvement(Ennemi e) {
 		
 		Random random = new Random(); 
 		
-		int nbRandom = random.nextInt(10);
+		int nbRandom = random.nextInt(100);
+			
+		e.setX(e.getX()+1);
+		e.getSprite().setTranslateX(e.getX());
+		//
 		
-		//e.getGroup().getChildren().remove(e.getSprite());
+		//e
 		
-		e.setX(e.getX()+nbRandom);
-		e.setY(e.getY()+nbRandom);
 		
-	//	groupes.get(e.getX()).getChildren().add(e.getSprite());
-				
 	}
+	
+	/*private void gameLoop() {
+		
+		while(running) {
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+			mouvement(ennemi);
+			
+			
+		}
+	}*/
 
 	private void creerSpriteEnnemi(Ennemi e) {
+		e.getSprite().setTranslateX(e.getX());
+		e.getSprite().setTranslateY(e.getY());
 		pane.getChildren().add(e.getSprite());
 	}
 	

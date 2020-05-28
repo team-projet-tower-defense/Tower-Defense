@@ -4,8 +4,8 @@ import javafx.scene.image.ImageView;
 
 public class Wither extends Ennemi {
 
-	public Wither(String nomEnnemi, int p, int a, int v, int x, int y) {
-		super(1000, 500, v, x, y, new ImageView("file:src/app/ressources/wither.png"));
+	public Wither(int x, int y) {
+		super(1000, 500, 1, x, y, new ImageView("file:src/app/ressources/wither.png"));
 		// TODO Auto-generated constructor stub
 	}
 
