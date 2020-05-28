@@ -41,12 +41,7 @@ public class Controleur implements Initializable {
 		ennemi = new Sorciere(5,5);
 		creerSpriteEnnemi(ennemi);
 		for(int i =0; i <10; i++) {
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 			mouvement(ennemi);
 			System.out.println("x: " + ennemi.getX() + " y: " + ennemi.getY());
 		}
