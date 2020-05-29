@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 public class Mage extends Tour {
 
 	public Mage(int x, int y) {
-		super( 600, 4, x, y, new ImageView("file:///C:/Users/ZINSOU/git/Tower-Defense/Tower Defense/src/app/ressources/mage.png"));
+		super( 600, 4, x, y);
 		// TODO Auto-generated constructor stub
 	}
 

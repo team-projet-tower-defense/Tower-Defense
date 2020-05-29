@@ -13,13 +13,13 @@ public abstract class Tour {
 	
 	private ImageView sprite;
 	
-	public Tour(int p, int a, int x, int y, ImageView s) {
+	public Tour(int p, int a, int x, int y) {
 		
 		pv=p;
 		attaque=a;
 		this.x=x;
 		this.y=y;
-		sprite=s;
+		
 	}
 	
 	public abstract void agit();
