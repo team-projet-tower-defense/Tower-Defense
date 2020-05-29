@@ -19,8 +19,9 @@ public class Controleur implements Initializable {
 	
 	private Carte carte;
 	
-	private Ennemi ennemi;
+	private Sorciere ennemi;
 	
+	private EnnemiVue ennemivue;
 	//private Tour tour;
 	
 	//private boolean running;
@@ -35,14 +36,17 @@ public class Controleur implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		//running=true;
+		
+		
 		carte= new Carte();
 		terrainVue = new CarteVue(carte, decor);
 		terrainVue.afficherCarte();
 		ennemi = new Sorciere(5,5);
-		creerSpriteEnnemi(ennemi);
+		ennemivue = new EnnemiVue(ennemi, pane);
+		ennemivue.creerSpriteEnnemi();
 		for(int i =0; i <10; i++) {
 			
-			mouvement(ennemi);
+			//mouvement(ennemi);
 			System.out.println("x: " + ennemi.getX() + " y: " + ennemi.getY());
 		}
 		
@@ -53,7 +57,6 @@ public class Controleur implements Initializable {
 	
 	}
 	
-	
 	/*public Ennemi ajouterEnnemi() {
 		Ennemi e= new Ennemi(100,5,2,25,10);
 		return e;
@@ -61,20 +64,20 @@ public class Controleur implements Initializable {
 	}
 	*/
 	
-	private void mouvement(Ennemi e) {
+	// private void mouvement(EnnemiVue e) {
 		
-		Random random = new Random(); 
+	//Random random = new Random(); 
 		
-		int nbRandom = random.nextInt(100);
+	//int nbRandom = random.nextInt(100);
 			
-		e.setX(e.getX()+1);
-		e.getSprite().setTranslateX(e.getX());
+	//	e.setX(e.getX()+1);
+	//	e.getSprite().setTranslateX(e.getX());
 		//
 		
 		//e
 		
 		
-	}
+//	}
 	
 	/*private void gameLoop() {
 		
@@ -91,11 +94,7 @@ public class Controleur implements Initializable {
 		}
 	}*/
 
-	private void creerSpriteEnnemi(Ennemi e) {
-		e.getSprite().setTranslateX(e.getX());
-		e.getSprite().setTranslateY(e.getY());
-		pane.getChildren().add(e.getSprite());
-	}
+	
 	
 	private void creerSpriteTour(Tour t) {
 		//pane.getChildren().add(t.getSprite());

@@ -61,10 +61,9 @@ public class CarteVue {
 	}
 	
 	
-	
 	private void ajouterImage(String URL) {
 		
-		decor.getChildren().add(new ImageView("file:src/app/ressources/"+URL));
+		decor.getChildren().add(new ImageView("file:///C:/Users/ZINSOU/git/Tower-Defense/Tower Defense/src/app/ressources/"+URL));
 		
 	}
 

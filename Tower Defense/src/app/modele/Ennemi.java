@@ -21,7 +21,7 @@ public abstract class Ennemi {
 	private int vitesse;
 	
 	
-	public Ennemi(int p, int a, int v, int x, int y, ImageView s) {
+	public Ennemi(int p, int a, int v, int x, int y) {
 		
 		
 		pv=p;
@@ -29,7 +29,7 @@ public abstract class Ennemi {
 		vitesse=v;
 		this.x=x;
 		this.y=y;
-		sprite=s;
+		
 		
 	}
 	
@@ -53,14 +53,6 @@ public abstract class Ennemi {
 
 	public  void setX(int n){
 		x=n;
-	}
-	
-	public void setSprite(ImageView s) {
-		sprite=s;
-	}
-	
-	public ImageView getSprite() {
-		return sprite;
 	}
 
 	public  int getY() {

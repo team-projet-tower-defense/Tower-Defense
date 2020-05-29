@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 public class Catapulte extends Tour {
 
 	public Catapulte(int x, int y) {
-		super( 300, 30, x, y,new ImageView("file:src/app/ressources/catapulte.png"));
+		super( 300, 30, x, y,new ImageView("file:///C:/Users/ZINSOU/git/Tower-Defense/Tower Defense/src/app/ressources/catapulte.png"));
 		// TODO Auto-generated constructor stub
 	}
 
