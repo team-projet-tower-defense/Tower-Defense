@@ -4,9 +4,8 @@ import javafx.scene.image.ImageView;
 
 public class Zombie extends Ennemi {
 
-	public Zombie(int x, int y) {
-		super(100, 40, 2, x, y);
-		// TODO Auto-generated constructor stub
+	public Zombie(int x, int y, Environnement environnement) {
+		super(100, 40, 2, x, y, environnement);
 	}
 
 	@Override

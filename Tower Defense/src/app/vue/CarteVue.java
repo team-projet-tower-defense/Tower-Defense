@@ -15,39 +15,28 @@ import javafx.scene.shape.Circle;
 public class CarteVue {
 	
 	private Carte carte;
-	
 	private TilePane decor ;
 	
 	public CarteVue(Carte c, TilePane d) {
-		
 		carte= c;
 		decor= d;
-	
-		
 	}
 	
 	public void afficherCarte() {
-
 		for (int x = 0; x < carte.getHauteur(); x++) {
 			for (int y = 0; y < carte.getLargeur(); y++) {
-				
 				
 				int codeCase = carte.getCase(x, y);
 
 				if (codeCase == 7) {
-					
 					ajouterImage("sable.png");
-					
 				}
 
 				else if (codeCase == 9) {
-					
 					ajouterImage("herbe.png");
-					
 				}
 
 				else if (codeCase == 10) {
-					
 					ajouterImage("roche.png");
 				}
 				
@@ -55,16 +44,10 @@ public class CarteVue {
 					ajouterImage("nether.png");
 				}
 			}
-
 		}
-
 	}
-	
 	
 	private void ajouterImage(String URL) {
-		
-		decor.getChildren().add(new ImageView("file:///C:/Users/ZINSOU/git/Tower-Defense/Tower Defense/src/app/ressources/"+URL));
-		
+		decor.getChildren().add(new ImageView("file:///C:/Users/ByzidDeveloppeur/git/Tower-Defense/Tower Defense/src/app/ressources/"+URL));
 	}
-
 }

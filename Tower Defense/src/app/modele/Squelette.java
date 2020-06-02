@@ -4,8 +4,8 @@ import javafx.scene.image.ImageView;
 
 public class Squelette extends Ennemi {
 	
-	public Squelette(int x, int y) {
-		super(200, 40, 2, x, y);
+	public Squelette(int x, int y, Environnement environnement) {
+		super(200, 40, 2, x, y, environnement);
 		// TODO Auto-generated constructor stub
 	}
 

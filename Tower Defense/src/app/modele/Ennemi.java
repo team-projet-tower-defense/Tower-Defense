@@ -9,28 +9,21 @@ import javafx.scene.image.ImageView;
 public abstract class Ennemi {
 	
 	private int x,y;
-	
+	private int dx,dy ; // direction 
+	private int pv;
+	private int attaque;
+	private int vitesse;
 	private ImageView sprite;
 	
-	private int dx,dy ;// direction 
+	protected Environnement environnement;
 	
-	private int pv;
-	
-	private int attaque;
-	
-	private int vitesse;
-	
-	
-	public Ennemi(int p, int a, int v, int x, int y) {
-		
-		
-		pv=p;
-		attaque=a;
-		vitesse=v;
-		this.x=x;
-		this.y=y;
-		
-		
+	public Ennemi(int p, int a, int v, int x, int y, Environnement env) {
+		this.pv = p;
+		this.attaque = a;
+		this.vitesse = v;
+		this.x = x;
+		this.y = y;
+		this.environnement = env;
 	}
 	
 	@Override
@@ -43,39 +36,38 @@ public abstract class Ennemi {
 		//faire tomber butin 
 	}
 	
-
 	public abstract void agit();
-	
 	
 	public int getX() {
 		return x;
 	}
 
 	public  void setX(int n){
-		x=n;
+		x = n;
 	}
 
 	public  int getY() {
 		return y;
 	}
+	
 	public  void setY(int n){
-		y=n;
+		y = n;
 	}
 	
 	public void decrementerPv(int n) {
-		this.pv-=n;	
+		this.pv -= n;	
 	}
 
 	public void incrementerPv(int n) {
-		this.pv+=n;	
+		this.pv += n;	
 	}
 
 	public boolean estVivant() {
-		return this.pv>0;
+		return this.pv > 0;
 	}
 
 	public void meurt(){
-		this.pv=0;
+		this.pv = 0;
 	}
 	
 	public void attaqueTour(Tour d) {
@@ -83,10 +75,9 @@ public abstract class Ennemi {
 	}
 	
 	public boolean estEnVie() {
-		if(pv!=0) {
+		if(pv != 0) {
 			return true;
 		}
 		return false;
 	}
-
 }

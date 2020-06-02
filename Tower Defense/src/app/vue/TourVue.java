@@ -31,19 +31,19 @@ private ImageView sprite;
 	
 		
 		if (tour instanceof Archer ) { 
-			sprite = new ImageView("file:///C:/Users/ZINSOU/git/Tower-Defense/Tower Defense/src/app/ressources/archer.png");
+			sprite = new ImageView("file:///C:/Users/ByzidDeveloppeur/git/Tower-Defense/Tower Defense/src/app/ressources/archer.png");
 		//	pane.getChildren().add(s);
 		}
 		else if (tour instanceof Mage) { 
-			sprite = new ImageView("file:///C:/Users/ZINSOU/git/Tower-Defense/Tower Defense/src/app/ressources/mage.png");
+			sprite = new ImageView("file:///C:/Users/ByzidDeveloppeur/git/Tower-Defense/Tower Defense/src/app/ressources/mage.png");
 		//	pane.getChildren().add(s);
 		}
 		else if (tour instanceof Catapulte) { 
-			sprite = new ImageView("file:///C:/Users/ZINSOU/git/Tower-Defense/Tower Defense/src/app/ressources/catapulte.png");
+			sprite = new ImageView("file:///C:/Users/ByzidDeveloppeur/git/Tower-Defense/Tower Defense/src/app/ressources/catapulte.png");
 		//	pane.getChildren().add(s);
 		}
 		else if (tour instanceof Chevalier) { 
-			sprite = new ImageView("file:///C:/Users/ZINSOU/git/Tower-Defense/Tower Defense/src/app/ressources/chevalier.png");
+			sprite = new ImageView("file:///C:/Users/ByzidDeveloppeur/git/Tower-Defense/Tower Defense/src/app/ressources/chevalier.png");
 		//	pane.getChildren().add(s);
 		}	
 		
