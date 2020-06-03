@@ -28,21 +28,26 @@ public class CarteVue {
 				
 				int codeCase = carte.getCase(x, y);
 
-				if (codeCase == 7) {
+				if (codeCase == 6) {
 					ajouterImage("sable.png");
 				}
 
-				else if (codeCase == 9) {
+				else if (codeCase == 8) {
 					ajouterImage("herbe.png");
 				}
 
-				else if (codeCase == 10) {
+				else if (codeCase == 7) {
 					ajouterImage("roche.png");
 				}
 				
-				else if (codeCase == 11) {
+				else if (codeCase == 10) {
 					ajouterImage("nether.png");
 				}
+				
+				else if (codeCase == 11) {
+					ajouterImage("stone.png");
+				}
+				
 			}
 		}
 	}

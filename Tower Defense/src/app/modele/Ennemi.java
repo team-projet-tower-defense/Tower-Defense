@@ -80,4 +80,19 @@ public abstract class Ennemi {
 		}
 		return false;
 	}
+	
+	public void seDeplace() {
+		Random random = new Random();
+		int randomInt = random.nextInt(3);
+		int PosX = this.getX() + this.vitesse * randomInt;
+		int PosY = this.getY() + this.vitesse * randomInt;
+		
+		while(!(environnement.dansTerrain(PosX, PosY))) {
+			PosX = this.getX() + this.vitesse * randomInt;
+			PosY = this.getY() + this.vitesse * randomInt;
+		}
+		
+		this.setX(PosX);
+		this.setY(PosY);
+	}
 }

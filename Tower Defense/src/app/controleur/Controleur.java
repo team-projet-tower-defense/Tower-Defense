@@ -24,7 +24,7 @@ public class Controleur implements Initializable {
 	private Environnement environnement;
 	//private Tour tour;
 	//private boolean running;
-	   
+   
 	@FXML
     private TilePane decor;
 	@FXML
@@ -38,16 +38,20 @@ public class Controleur implements Initializable {
 		//running=true;
 		
 		carte = new Carte();
+		environnement = new Environnement(carte);
 		terrainVue = new CarteVue(carte, decor);
 		terrainVue.afficherCarte();
-		ennemi = new Sorciere(5,5, environnement);
+		ennemi = new Sorciere(1,1, environnement);
 		ennemivue = new EnnemiVue(ennemi, pane);
 		ennemivue.creerSpriteEnnemi();
+		initialiserGameLoop();
+		gameLoop.play();
 		
 		// Mouvement ennemi
-		for(int i =0; i <10; i++) {
-			System.out.println("x: " + ennemi.getX() + " y: " + ennemi.getY());
-		}
+		
+//		for(int i =0; i <10; i++) {
+//			System.out.println("x: " + ennemi.getX() + " y: " + ennemi.getY());
+//		}
 		
 	//tour = new Chevalier("Chevalier", 500, 60, 5, 6);
 	//creerSpriteTour(tour);
@@ -59,7 +63,6 @@ public class Controleur implements Initializable {
 	/*public Ennemi ajouterEnnemi() {
 		Ennemi e= new Ennemi(100,5,2,25,10);
 		return e;
-		
 	}
 	*/
 	
@@ -76,45 +79,22 @@ public class Controleur implements Initializable {
 		//e	
 //	}
 	
-	private void gameLoop() {
+	private void initialiserGameLoop() {
 		this.gameLoop = new Timeline();
 		this.time = 0;
 		this.gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
-		KeyFrame frame = new KeyFrame(Duration.seconds(1.017),
+		KeyFrame frame = new KeyFrame(Duration.seconds(0.1),
 		(ev -> {
-				if(this.time%2 == 0) {
-					ennemivue.creerSpriteEnnemi();
-				}
+				System.out.println("---------");
+				ennemi.seDeplace();
+				ennemivue.deplacementSprite();
+					
 		}));
+		gameLoop.getKeyFrames().add(frame);
 	}
-
-	
-//	g = new Gravity(map, hero, ter);
-//    gameLoop2 = new Timeline();
-//    gameLoop2.setCycleCount(Timeline.INDEFINITE);
-//    gameLoop2.getKeyFrames().add(g.getGrav());
-//    gameLoop2.play();
-//
-//    // MOUVEMENT AND COLLISION MANAGEMENT //
-//    grille.setOnKeyReleased(ev3 -> {
-//        gameLoop1.stop();
-//        mouvement = false;
-//    });
-//    grille.setOnKeyPressed(ev -> {
-//        if (!mouvement) {
-//            gameLoop1 = new Timeline();
-//            gameLoop1.setCycleCount(Timeline.INDEFINITE);
-//            move = new Mouvement(ev, gameLoop1, gameLoop2, map.getM(), map.getGrille(), hero, jeu, ter);
-//            gameLoop1.getKeyFrames().add(move.getMove());
-//            gameLoop1.play();
-//            mouvement = true;
-//        }
-//    });
-    
-	
+    	
 	private void creerSpriteTour(Tour t) {
 		//pane.getChildren().add(t.getSprite());
 	}
-	
 }

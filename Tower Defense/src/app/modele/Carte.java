@@ -3,7 +3,9 @@ package app.modele;
 import java.util.ArrayList;
 
 public class Carte {
-
+	
+	private int largeur=30;
+	private int hauteur=20;
 	private int[][] terrain= {{7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7},
 			{7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,7},
 			{7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,7},
@@ -25,21 +27,20 @@ public class Carte {
 			{7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,7},
 			{7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7}};
 			
-	
-	private int largeur=30;
-	private int hauteur=20;
-	
-			
-	public Carte() {
-		
-	}
-	
 	public int getLargeur() {
 		return largeur;
+	}
+	
+	public int getLargeurEnPixels() {
+		return largeur * 32;
 	}
 
 	public int getHauteur() {
 		return hauteur;
+	}
+	
+	public int getHauteurEnPixels() {
+		return hauteur * 32;
 	}
 	
 	public int getCase(int x, int y) {
