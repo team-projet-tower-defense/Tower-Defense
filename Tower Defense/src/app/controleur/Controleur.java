@@ -41,7 +41,7 @@ public class Controleur implements Initializable {
 		environnement = new Environnement(carte);
 		terrainVue = new CarteVue(carte, decor);
 		terrainVue.afficherCarte();
-		ennemi = new Sorciere(1,1, environnement);
+		ennemi = new Sorciere(120,120, environnement);
 		ennemivue = new EnnemiVue(ennemi, pane);
 		ennemivue.creerSpriteEnnemi();
 		initialiserGameLoop();
@@ -86,7 +86,6 @@ public class Controleur implements Initializable {
 		
 		KeyFrame frame = new KeyFrame(Duration.seconds(0.1),
 		(ev -> {
-				System.out.println("---------");
 				ennemi.seDeplace();
 				ennemivue.deplacementSprite();
 					

@@ -16,7 +16,6 @@ public class Environnement {
         this.ennemiVueListe = new ArrayList<>();
     }
 
-    
 	public ArrayList<EnnemiVue> getEnnemiVueListe() {
 		return ennemiVueListe;
 	}
@@ -28,7 +27,7 @@ public class Environnement {
 	
 	// Vérifie si le personnage est dans le terrain ou non
 	public boolean dansTerrain(int x, int y){
-        return (0 <= x && x < this.carte.getLargeurEnPixels() && 0 <= y && y < this.carte.getHauteurEnPixels());
+        return (0 <= x && x < this.carte.getLargeurEnPixels() - 64 && 0 <= y && y < this.carte.getHauteurEnPixels() - 64);
     }
 }
 
