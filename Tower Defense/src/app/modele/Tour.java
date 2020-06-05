@@ -6,20 +6,17 @@ import javafx.scene.image.ImageView;
 public abstract class Tour {
 	
 	private int pv;
-	
 	private int attaque;
-	
 	private int x,y;
-	
 	private ImageView sprite;
+	protected Environnement environnement;
 	
-	public Tour(int p, int a, int x, int y) {
-		
-		pv=p;
-		attaque=a;
-		this.x=x;
-		this.y=y;
-		
+	public Tour(int p, int a, int x, int y, Environnement environnement) {
+		pv = p;
+		attaque = a;
+		this.x = x;
+		this.y = y;
+		this.environnement = environnement;
 	}
 	
 	public abstract void agit();

@@ -21,9 +21,18 @@ public class Controleur implements Initializable {
 	private Carte carte;
 	private Sorciere ennemi;
 	private EnnemiVue ennemivue;
+	
+	private Chevalier tour1;
+	private Archer tour2;
+	private Catapulte tour3;
+	private Mage tour4;
+	
+	private TourVue tourvue1;
+	private TourVue tourvue2;
+	private TourVue tourvue3;
+	private TourVue tourvue4;
+	
 	private Environnement environnement;
-	//private Tour tour;
-	//private boolean running;
    
 	@FXML
     private TilePane decor;
@@ -35,60 +44,43 @@ public class Controleur implements Initializable {
 	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		//running=true;
-		
 		carte = new Carte();
 		environnement = new Environnement(carte);
+		
 		terrainVue = new CarteVue(carte, decor);
 		terrainVue.afficherCarte();
-		ennemi = new Sorciere(120,120, environnement);
+		
+		ennemi = new Sorciere(5, 448, environnement);	
 		ennemivue = new EnnemiVue(ennemi, pane);
 		ennemivue.creerSpriteEnnemi();
+		
+		tour1 = new Chevalier(50, 380, environnement);
+		tour2 = new Archer(18, 380, environnement);
+		tour3 = new Catapulte(89, 380, environnement);
+		tour4 = new Mage(150, 380, environnement);
+		
+		tourvue1 = new TourVue(tour1, pane);
+		tourvue2 = new TourVue(tour2, pane);
+		tourvue3 = new TourVue(tour3, pane);
+		tourvue4 = new TourVue(tour4, pane);
+		
+		tourvue1.creerSpriteTour();
+		tourvue2.creerSpriteTour();
+		tourvue3.creerSpriteTour();
+		tourvue4.creerSpriteTour();
+		
 		initialiserGameLoop();
 		gameLoop.play();
-		
-		// Mouvement ennemi
-		
-//		for(int i =0; i <10; i++) {
-//			System.out.println("x: " + ennemi.getX() + " y: " + ennemi.getY());
-//		}
-		
-	//tour = new Chevalier("Chevalier", 500, 60, 5, 6);
-	//creerSpriteTour(tour);
-	
-	//sssmouvement(ennemi);
-	
 	}
-	
-	/*public Ennemi ajouterEnnemi() {
-		Ennemi e= new Ennemi(100,5,2,25,10);
-		return e;
-	}
-	*/
-	
-	// private void mouvement(EnnemiVue e) {
-		
-	//Random random = new Random(); 
-		
-	//int nbRandom = random.nextInt(100);
-			
-	//	e.setX(e.getX()+1);
-	//	e.getSprite().setTranslateX(e.getX());
-		//
-		
-		//e	
-//	}
 	
 	private void initialiserGameLoop() {
 		this.gameLoop = new Timeline();
-		this.time = 0;
 		this.gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
-		KeyFrame frame = new KeyFrame(Duration.seconds(0.1),
+		KeyFrame frame = new KeyFrame(Duration.seconds(0.016),
 		(ev -> {
 				ennemi.seDeplace();
-				ennemivue.deplacementSprite();
-					
+				ennemivue.deplacementSprite();		
 		}));
 		gameLoop.getKeyFrames().add(frame);
 	}

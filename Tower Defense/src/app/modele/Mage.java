@@ -4,8 +4,8 @@ import javafx.scene.image.ImageView;
 
 public class Mage extends Tour {
 
-	public Mage(int x, int y) {
-		super( 600, 4, x, y);
+	public Mage(int x, int y, Environnement environnement) {
+		super( 600, 4, x, y, environnement);
 		// TODO Auto-generated constructor stub
 	}
 

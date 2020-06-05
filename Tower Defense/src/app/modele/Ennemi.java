@@ -82,17 +82,32 @@ public abstract class Ennemi {
 	}
 	
 	public void seDeplace() {
-		Random random = new Random();
-		int randomInt = random.nextInt(3);
-		int PosX = this.getX() + this.vitesse * randomInt;
-		int PosY = this.getY() + this.vitesse * randomInt;
+
+		if(this.x<224 && this.y==448) {
+            this.setX(x + this.vitesse);
+        }
+
+		else if(this.x==225 && this.y > 160) {
+            this.setY(y - this.vitesse);
+        }
 		
-		while(!(environnement.dansTerrain(PosX, PosY))) {
-			PosX = this.getX() + this.vitesse * randomInt;
-			PosY = this.getY() + this.vitesse * randomInt;
-		}
+		else if(this.x < 480 && this.y==160) {
+            this.setX(x + this.vitesse);
+        }
 		
-		this.setX(PosX);
-		this.setY(PosY);
+		else if(this.x==481 && this.y < 448) {
+            this.setY(y + this.vitesse);
+        }
+		
+		else if(this.x<736 && this.y==448) {
+            this.setX(x + this.vitesse);
+        }
+		else if(this.x==737 && this.y > 160) {
+            this.setY(y - this.vitesse);
+        }
+		
+		else if(this.x<928 && this.y==160) {
+            this.setX(x + this.vitesse);
+        }	
 	}
 }

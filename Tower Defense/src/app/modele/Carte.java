@@ -6,7 +6,9 @@ public class Carte {
 	
 	private int largeur=30;
 	private int hauteur=20;
-	private int[][] terrain= {{7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7},
+	private Sommet sommet;
+	private int[][] terrain= {
+			{7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7},
 			{7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,7},
 			{7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,7},
 			{7,8,8,8,8,11,11,11,11,11,11,11,11,11,11,11,11,11,8,8,8,11,11,11,11,11,11,11,11,7},
@@ -45,6 +47,10 @@ public class Carte {
 	
 	public int getCase(int x, int y) {
 		return terrain[x][y];
+	}
+
+	public int[] getSommetDeDepart() {
+		return sommet.getSommetDeDepart();
 	}
 
 }

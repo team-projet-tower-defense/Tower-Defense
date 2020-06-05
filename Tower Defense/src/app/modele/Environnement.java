@@ -8,11 +8,9 @@ public class Environnement {
 	
     private ArrayList<EnnemiVue> ennemiVueListe;
 	private Carte carte;
-//	private Pane pane;
 
     public Environnement(Carte c) {
         this.carte = c;
- //       this.pane = p;
         this.ennemiVueListe = new ArrayList<>();
     }
 
