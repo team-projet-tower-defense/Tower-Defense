@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
 public abstract class Ennemi {
 	
 	private int x,y;
-	private int dx,dy ; // direction 
+	private int dx,dy ;
 	private int pv;
 	private int attaque;
 	private int vitesse;
