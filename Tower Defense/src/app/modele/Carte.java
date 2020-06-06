@@ -6,7 +6,7 @@ public class Carte {
 	
 	private int largeur=30;
 	private int hauteur=20;
-	private Sommet sommet;
+	
 	private int[][] terrain= {
 			{7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7},
 			{7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,7},
@@ -49,8 +49,5 @@ public class Carte {
 		return terrain[x][y];
 	}
 
-	public int[] getSommetDeDepart() {
-		return sommet.getSommetDeDepart();
-	}
 
 }

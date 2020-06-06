@@ -21,6 +21,8 @@ public class Controleur implements Initializable {
 	private Carte carte;
 	private Sorciere ennemi;
 	private EnnemiVue ennemivue;
+	private Zombie zombie;
+	private EnnemiVue zombievue;
 	
 	private Chevalier tour1;
 	private Archer tour2;
@@ -54,6 +56,10 @@ public class Controleur implements Initializable {
 		ennemivue = new EnnemiVue(ennemi, pane);
 		ennemivue.creerSpriteEnnemi();
 		
+		zombie = new Zombie(5, 416, environnement);	
+		zombievue = new EnnemiVue(zombie, pane);
+		zombievue.creerSpriteEnnemi();
+		
 		tour1 = new Chevalier(50, 380, environnement);
 		tour2 = new Archer(18, 380, environnement);
 		tour3 = new Catapulte(89, 380, environnement);
@@ -79,8 +85,11 @@ public class Controleur implements Initializable {
 		
 		KeyFrame frame = new KeyFrame(Duration.seconds(0.016),
 		(ev -> {
-				ennemi.seDeplace();
-				ennemivue.deplacementSprite();		
+				ennemi.seDeplace(1);
+				zombie.seDeplace(2);
+				ennemivue.deplacementSprite();	
+				
+				zombievue.deplacementSprite();
 		}));
 		gameLoop.getKeyFrames().add(frame);
 	}

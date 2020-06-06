@@ -81,33 +81,68 @@ public abstract class Ennemi {
 		return false;
 	}
 	
-	public void seDeplace() {
+	public void seDeplace(int choixChemin) {
+		
+		switch(choixChemin) {
+		
+		case 1:
 
-		if(this.x<224 && this.y==448) {
-            this.setX(x + this.vitesse);
-        }
-
-		else if(this.x==225 && this.y > 160) {
-            this.setY(y - this.vitesse);
-        }
+			if(this.x<224 && this.y==448) {
+	            this.setX(x + this.vitesse);
+	        }
+	
+			else if(this.x==225 && this.y > 160) {
+	            this.setY(y - this.vitesse);
+	        }
+			
+			else if(this.x < 480 && this.y==160) {
+	            this.setX(x + this.vitesse);
+	        }
+			
+			else if(this.x==481 && this.y < 448) {
+	            this.setY(y + this.vitesse);
+	        }
+			
+			else if(this.x<736 && this.y==448) {
+	            this.setX(x + this.vitesse);
+	        }
+			else if(this.x==737 && this.y > 160) {
+	            this.setY(y - this.vitesse);
+	        }
+			
+			else if(this.x<928 && this.y==160) {
+	            this.setX(x + this.vitesse);
+	        }
 		
-		else if(this.x < 480 && this.y==160) {
-            this.setX(x + this.vitesse);
-        }
+		case 2:
+			
+			if(this.x<256 && this.y==416) {
+	            this.setX(x + this.vitesse);
+	        }
+	
+			else if(this.x==257 && this.y > 128) {
+	            this.setY(y - this.vitesse);
+	        }
+			
+			else if(this.x < 500 && this.y==128) {
+	            this.setX(x + this.vitesse);
+	        }
+			
+			else if(this.x==501 && this.y < 416) {
+	            this.setY(y + this.vitesse);
+	        }
+			
+			else if(this.x<768 && this.y==416) {
+	            this.setX(x + this.vitesse);
+	        }
+			else if(this.x==769 && this.y > 128) {
+	            this.setY(y - this.vitesse);
+	        }
+			
+			else if(this.x<950 && this.y==128) {
+	            this.setX(x + this.vitesse);
+			}
 		
-		else if(this.x==481 && this.y < 448) {
-            this.setY(y + this.vitesse);
-        }
-		
-		else if(this.x<736 && this.y==448) {
-            this.setX(x + this.vitesse);
-        }
-		else if(this.x==737 && this.y > 160) {
-            this.setY(y - this.vitesse);
-        }
-		
-		else if(this.x<928 && this.y==160) {
-            this.setX(x + this.vitesse);
-        }	
+		}
 	}
 }

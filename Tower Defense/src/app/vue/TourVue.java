@@ -16,35 +16,47 @@ import javafx.scene.layout.Pane;
 
 public class TourVue {
 	
-	private ImageView sprite;
+private ImageView sprite;
+	
 	private Pane pane;
+	
 	private Tour tour;
 	
 	public TourVue(Tour t, Pane p) {
-		this.tour = t;
-		this.pane = p;
+		this.tour=t;
+		this.pane =p;
 	}
 	
 	private void attribuerImageEnnemi() {
+	
+		
 		if (tour instanceof Archer ) { 
 			sprite = new ImageView("file:Tower Defense/src/app/ressources/archer.png");
+		//	pane.getChildren().add(s);
 		}
 		else if (tour instanceof Mage) { 
 			sprite = new ImageView("file:Tower Defense/src/app/ressources/mage.png");
+		//	pane.getChildren().add(s);
 		}
 		else if (tour instanceof Catapulte) { 
 			sprite = new ImageView("file:Tower Defense/src/app/ressources/catapulte.png");
+		//	pane.getChildren().add(s);
 		}
 		else if (tour instanceof Chevalier) { 
 			sprite = new ImageView("file:Tower Defense/src/app/ressources/chevalier.png");
-		}			
+		//	pane.getChildren().add(s);
+		}	
+		
+			
 	}
 	
 	public void creerSpriteTour() {
+		
 		this.attribuerImageEnnemi();
 		sprite.setTranslateX(tour.getX());
 		sprite.setTranslateY(tour.getY());
-		pane.getChildren().add(sprite);	
+		pane.getChildren().add(sprite);
+		
 	}
 	
 	public void deplacementSprite() {
@@ -52,7 +64,17 @@ public class TourVue {
 		sprite.setTranslateY(tour.getY());
 	}
 	
+	public void setSprite(ImageView s) {
+		sprite=s;
+	}
+	
+	public ImageView getSprite() {
+		return sprite;
+	}
+	
 	public Tour getTour() {
 		return tour;
 	}
+
+
 }
