@@ -14,10 +14,13 @@ public class Diamant {
 
 	}
 	
-	private void ajouterDiamant() {
+	private void ajouterDiamant() throws InterruptedException {
 		int nbrAajouter = ennemi.butin();
 		
 		do {
+			
+		Thread.sleep(1000);
+		nbrAajouter ++;
 		
 		for (int i = 0 ; i < nbrAajouter ; i ++)
 			barreDiamant.add(1);
