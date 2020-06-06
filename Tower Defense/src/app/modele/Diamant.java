@@ -17,14 +17,17 @@ public class Diamant {
 	private void ajouterDiamant() throws InterruptedException {
 		int nbrAajouter = ennemi.butin();
 		
-		Thread.sleep(1000);
-		barreDiamant.add(1);
-		
-		do {	
-		for (int i = 0 ; i < nbrAajouter ; i ++)
+		do {
+			Thread.sleep(1000);
 			barreDiamant.add(1);
-		
-		}while(barreDiamant.size() < 20);	
+			
+			do {	
+			for (int i = 0 ; i < nbrAajouter ; i ++)
+				barreDiamant.add(1);
+			
+			}while(nbrAajouter < 20);	
+			
+		}while(barreDiamant.size() < 20);
 	}
 	
 	private void decrementerDiamant() {
