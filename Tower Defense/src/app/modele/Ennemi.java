@@ -80,10 +80,10 @@ public abstract class Ennemi {
 		}
 		return false;
 	}
-	
+
+	// 
 	public void seDeplace(int choixChemin) {
-		
-		
+
         if(choixChemin == 1) {
         	
             if(this.x<224 && this.y==448) {
