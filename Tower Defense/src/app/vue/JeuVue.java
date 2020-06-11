@@ -14,6 +14,8 @@ public class JeuVue {
 	
 	private ArrayList<EnnemiVue> sprites;
 	
+	private int compteur = 0;
+	
 	public JeuVue(Jeu j, Pane p) {
 		pane=p;
 		partie=j;
@@ -28,6 +30,20 @@ public class JeuVue {
 				sprite.creerSpriteEnnemi();
 				sprites.add(sprite);
 			}
+	}
+	
+	public void setup2(int choix) {
+		
+		if(compteur<partie.getEnnemisEnJeu().size()) {
+		EnnemiVue sprite =new EnnemiVue(partie.getEnnemisEnJeu().get(partie.getEnnemisEnJeu().size()-1),pane);
+		sprite.creerSpriteEnnemi();
+		sprites.add(sprite);
+		compteur++;
+		}
+	}
+	
+	public ArrayList<EnnemiVue> sprites(){
+		return sprites;
 	}
 	
 	public EnnemiVue getEnnemiVue(Ennemi e) {
