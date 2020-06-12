@@ -20,93 +20,87 @@ import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 
 public class Controleur implements Initializable {
-	
-	private static final int Environnement = 0;
-	private Jeu jeu;
+
 	private CarteVue terrainVue;
+	
 	private Carte carte;
-	private Sorciere ennemi;
-	private EnnemiVue ennemivue;
-	private Zombie zombie;
-	private EnnemiVue zombievue;
 	
-	private Chevalier tour1;
-	private Archer tour2;
-	private Catapulte tour3;
-	private Mage tour4;
+	private Jeu partie;
 	
-	public TourVue tourvue;
-	private TourVue tourvue1;
-	private TourVue tourvue2;
-	private TourVue tourvue3;
-	private TourVue tourvue4;
+	private JeuVue partieVue;
 	
-	private Environnement environnement;
-	
-    @FXML
-    private Button testClick;
-	@FXML
-	private Label message;
-	@FXML
-   private TextField compteurVie;
+	//private Environnement environnement;
+   
 	@FXML
     private TilePane decor;
+	
 	@FXML
 	private Pane pane;
+	
 	private Timeline gameLoop;
-	private int time;
-	private Tour tour;
-	private CarteVue carte2;
-	//private int codeCase;
 	
-	public String nompor = "non";
+	@FXML
+    private Button bouton;
 	
-    @FXML
+	@FXML
     public ImageView defenseArcher;
-//    @FXML
-//    public ImageView Catapulte;
-//    @FXML
-//    public ImageView Chevalier;
-//    @FXML
-//    public ImageView Mage;
-  
-//    @FXML
-//    public ImageView nomTour = Archer;
-   // public int idTour = 0;
-    
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	
+	@FXML
+	private Label message;
+	
+	@FXML
+    private TextField compteurVie;
+	
+	private int numVague=2;
 
-		carte = new Carte();
-		environnement = new Environnement(carte);
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		partie = new Jeu(/*environnement*/);
+		partieVue = new JeuVue(partie, pane);
+		
+		carte = partie.getCarte();
+		terrainVue= new CarteVue(carte, decor);
+		//environnement = partie.getEnvironnement();
 		
 		terrainVue = new CarteVue(carte, decor);
 		terrainVue.afficherCarte();
-		
-		ennemi = new Sorciere(environnement);	
-		ennemivue = new EnnemiVue(ennemi, pane);
-		ennemivue.creerSpriteEnnemi();
-		
-		zombie = new Zombie(environnement);	
-		zombievue = new EnnemiVue(zombie, pane);
-		zombievue.creerSpriteEnnemi();
-
+		partie.initialiserVagues(numVague);
 		clicTourelle();
 		initialiserGameLoop();
 		gameLoop.play();
+		
 	}
-
+	
 	private void initialiserGameLoop() {
 		this.gameLoop = new Timeline();
 		this.gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
 		KeyFrame frame = new KeyFrame(Duration.seconds(0.016),
 		(ev -> {
-				ennemi.seDeplace(1);
-				zombie.seDeplace(2);
+
+				partie.vague(numVague);
+				partieVue.setup(numVague);
+				//System.out.println(partie.getEnnemisEnJeu());
+				//System.out.println(partieVue.sprites());	
+				//System.out.println(partie.getPvButin());
+				for(Ennemi e: partie.getEnnemisEnJeu()) {
+					e.seDeplace();
+					partieVue.getEnnemiVue(e).deplacementSprite();
+					if(e.butAtteint()) {
+						e.meurt();
+						//System.out.println(e +" dead");
+						
+						partie.getASupprimer().add(e);	
+						partie.decrementerPvButin(e.getAttaqueSurButin());
+						
+					}
+				}
 				
-				ennemivue.deplacementSprite();	
-				zombievue.deplacementSprite();
+				for(Ennemi e : partie.getASupprimer()) {
+					partieVue.sprites().remove(partieVue.getEnnemiVue(e));
+					partie.getEnnemisEnJeu().remove(e);
+					//System.out.println(e +"dead");
+				}
 		}));
 		gameLoop.getKeyFrames().add(frame);
 	}
@@ -116,13 +110,16 @@ public class Controleur implements Initializable {
 	}
 	
 	public void clicSurMap(MouseEvent ev) {		
+		System.out.println("hahah");
 		for (int i = 0; i < decor.getChildren().size(); i++) {
+			
 			if(decor.getChildren().get(i).getId() == "stone" /*&& verifiePlaceLibre(decor.getChildren().get(i).getLayoutX(), decor.getChildren().get(i).getLayoutY())*/){
 				decor.getChildren().get(i).setOnMouseClicked(e ->{
 					Node tuile = (Node) e.getSource();
 					//System.out.println(jeu.getDefense());
-					ImageView tourelle = new ImageView("file:Tower Defense/src/app/ressources/archer.png");
-			//		jeu.getDefense().add(new Archer(environnement));
+					ImageView tourelle = new ImageView("file:src/app/ressources/archer.png");
+					partie.getDefenses().add(new Archer(ev.getX(),ev.getY()));
+					System.out.println(partie.getDefenses());
 					tourelle.setLayoutX(tuile.getLayoutX());
 					tourelle.setLayoutY(tuile.getLayoutY());					
 		            pane.getChildren().add(tourelle);
@@ -131,15 +128,5 @@ public class Controleur implements Initializable {
 		}
 	}
 
-
-	
-/*	public boolean verifiePlaceLibre(double x, double y) {
-        for (int i = 0; i < decor.getChildren().size(); i++) {
-            if (this.e1.getTourelles().get(i).getX() == x && this.e1.getTourelles().get(i).getY() == y) {
-                return false;
-            }
-        }
-        return true;
-    }*/
-
+    	
 }

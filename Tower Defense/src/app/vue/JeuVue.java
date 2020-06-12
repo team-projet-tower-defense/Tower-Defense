@@ -22,17 +22,8 @@ public class JeuVue {
 	
 		sprites = new ArrayList();
 	}
-	
-	public void setup(int choix){
 		
-			for(Ennemi e : partie.getEnnemisEnJeu()) {
-				EnnemiVue sprite = new EnnemiVue(e,pane);
-				sprite.creerSpriteEnnemi();
-				sprites.add(sprite);
-			}
-	}
-	
-	public void setup2(int choix) {
+	public void setup(int choix) {
 		
 		if(compteur<partie.getEnnemisEnJeu().size()) {
 		EnnemiVue sprite =new EnnemiVue(partie.getEnnemisEnJeu().get(partie.getEnnemisEnJeu().size()-1),pane);

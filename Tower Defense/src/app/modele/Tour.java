@@ -7,22 +7,41 @@ public abstract class Tour {
 	
 	private int pv;
 	private int attaque;
-	private int x,y;
+	private double x,y;
 	private ImageView sprite;
-	protected Environnement environnement;
 	
-	public Tour(int p, int a, int x, int y, Environnement environnement) {
+	public Tour(int p, int a, double d, double e) {
 		pv = p;
 		attaque = a;
-		this.x = x;
-		this.y = y;
-		this.environnement = environnement;
+		this.x = d;
+		this.y = e;
+		
 	}
 	
 	public abstract void agit();
 	
 	public int attaque(Ennemi e) {
 		return attaque;
+	}
+	
+	public int ressourcesDiamant() {
+		
+		if (this instanceof Chevalier) { 
+			return 20;
+		}
+		
+		else if (this instanceof Mage) { 
+			return 15;
+		}
+		
+		else if (this instanceof Archer) { 
+			return 5;
+		}
+		
+		else/* if (this instanceof Catapulte)*/ { 
+			return 10;
+		}	
+		
 	}
 	
 	public void recevoirDegats(int d) {
@@ -40,11 +59,11 @@ public abstract class Tour {
 		return false;
 	}
 	
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 	
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 	

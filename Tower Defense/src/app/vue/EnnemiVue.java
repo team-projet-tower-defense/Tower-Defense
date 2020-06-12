@@ -22,27 +22,27 @@ public class EnnemiVue {
 	
 	private void attribuerImageEnnemi() {
 		if (ennemi instanceof Zombie) { 
-			sprite = new ImageView("file:Tower Defense/src/app/ressources/zombie.png");
+			sprite = new ImageView("file:src/app/ressources/zombie.png");
 		//	pane.getChildren().add(s);
 		}
 		
 		else if (ennemi instanceof Sorciere) { 
-			sprite = new ImageView("file:Tower Defense/src/app/ressources/sorciere.png");
+			sprite = new ImageView("file:src/app/ressources/sorciere.png");
 		//	pane.getChildren().add(s);
 		}
 		
 		else if (ennemi instanceof Wither) { 
-			sprite = new ImageView("file:Tower Defense/src/app/ressources/wither.png");
+			sprite = new ImageView("file:src/app/ressources/wither.png");
 		//	pane.getChildren().add(s);
 		}
 		
 		else if (ennemi instanceof Pigman) { 
-			sprite = new ImageView("file:Tower Defense/src/app/ressources/pigman.png");
+			sprite = new ImageView("file:src/app/ressources/pigman.png");
 		//	pane.getChildren().add(s);
 		}
 		
 		else if  (ennemi instanceof Squelette) { 
-			sprite = new ImageView("file:Tower Defense/src/app/ressources/squlette.png");
+			sprite = new ImageView("file:src/app/ressources/squelette.png");
 		//	pane.getChildren().add(s);
 		}	
 	}
@@ -70,5 +70,9 @@ public class EnnemiVue {
 	public Ennemi getEnnemi() {
 		return ennemi;
 	}
+	
+	//public String toString() {
+		//return "exists " + ennemi;
+	//}
 
 }

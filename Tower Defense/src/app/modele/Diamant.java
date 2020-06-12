@@ -31,14 +31,14 @@ public class Diamant {
 	}
 	
 	private void decrementerDiamant() {
-		int nbrAaDecrementer = tour.resourcesDiamant();
+		/*int nbrAaDecrementer = tour.resourcesDiamant();
 		
 		do {
 		
 		for (int i = 0 ; i < nbrAaDecrementer ; i ++)
 			barreDiamant.remove(1);
 		
-		}while(nbrAaDecrementer < 0);	
+		}while(nbrAaDecrementer < 0);*/	
 	}
 	
 	

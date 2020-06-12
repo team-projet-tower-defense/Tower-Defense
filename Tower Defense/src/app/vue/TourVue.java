@@ -31,19 +31,19 @@ private ImageView sprite;
 	
 		
 		if (tour instanceof Archer ) { 
-			sprite = new ImageView("file:Tower Defense/src/app/ressources/archer.png");
+			sprite = new ImageView("file:src/app/ressources/archer.png");
 		//	pane.getChildren().add(s);
 		}
 		else if (tour instanceof Mage) { 
-			sprite = new ImageView("file:Tower Defense/src/app/ressources/mage.png");
+			sprite = new ImageView("file:src/app/ressources/mage2.png");
 		//	pane.getChildren().add(s);
 		}
 		else if (tour instanceof Catapulte) { 
-			sprite = new ImageView("file:Tower Defense/src/app/ressources/catapulte.png");
+			sprite = new ImageView("file:src/app/ressources/catapulte.png");
 		//	pane.getChildren().add(s);
 		}
 		else if (tour instanceof Chevalier) { 
-			sprite = new ImageView("file:Tower Defense/src/app/ressources/chevalier.png");
+			sprite = new ImageView("file:src/app/ressources/chevalier.png");
 		//	pane.getChildren().add(s);
 		}	
 		
