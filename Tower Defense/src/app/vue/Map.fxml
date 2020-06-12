@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
@@ -24,8 +25,7 @@
    <bottom>
       <Pane prefHeight="120.0" prefWidth="960.0" style="-fx-background-color: #1ABC9C;" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="19.0" layoutY="41.0" prefHeight="40.0" prefWidth="107.0" style="-fx-font-weight: bold;" text="8 000" />
-            <Text fill="#9f6608" layoutX="66.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="/  8 000" wrappingWidth="55.98307228088379" />
+            <Text fill="#9f6608" layoutX="66.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="/  8000" wrappingWidth="55.98307228088379" />
             <ImageView fx:id="defenseCatapulte" fitHeight="60.0" fitWidth="60.0" layoutX="236.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../ressources/bigCatapulte.png" />
@@ -69,16 +69,17 @@
             <Text fill="#9f6608" layoutX="724.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Round" />
             <TextField layoutX="778.0" layoutY="24.0" prefHeight="26.0" prefWidth="95.0" />
             <TextField layoutX="778.0" layoutY="71.0" prefHeight="26.0" prefWidth="94.0" />
-            <ImageView fx:id="retourMenu" fitHeight="40.0" fitWidth="40.0" layoutX="909.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="quitterJeu" fitHeight="40.0" fitWidth="40.0" layoutX="909.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../ressources/home.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="couperSon" fitHeight="40.0" fitWidth="40.0" layoutX="909.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="jouerSon" fitHeight="40.0" fitWidth="40.0" layoutX="909.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../ressources/sound.png" />
                </image>
             </ImageView>
+            <Label fx:id="pvButin" layoutX="28.0" layoutY="52.0" prefHeight="18.0" prefWidth="53.0" style="-fx-font-weight: bold;" text="8000" />
          </children>
          <effect>
             <Blend />

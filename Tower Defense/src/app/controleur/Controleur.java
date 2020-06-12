@@ -17,57 +17,43 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
 
 public class Controleur implements Initializable {
 
+	public TourVue tourvue;
+	public int idTour;
+	
+	private boolean clicSurArcher, clicSurCatapulte, clicSurMage, clicSurChevalier = false;
 	private CarteVue terrainVue;
-	
-	private Carte carte;
-	
-	private Jeu partie;
-	
+	private ImageView tourelle;
+	private Timeline gameLoop;
 	private JeuVue partieVue;
-	
-	//private Environnement environnement;
-   
+	private int numVague = 2;
+	private Carte carte;
+	private Jeu partie;
+
+    @FXML
+    private ImageView defenseArcher, defenseCatapulte, defenseMage, defenseChevalier;
+    @FXML
+    private TextField compteurVie;
+    @FXML
+    private ImageView quitterJeu;
 	@FXML
     private TilePane decor;
-	
-	@FXML
-	private Pane pane;
-	
-	private Timeline gameLoop;
-	
-	@FXML
-    private Button bouton;
 	@FXML
 	private Label message;
-	
 	@FXML
-    private TextField compteurVie;
-	
+    private Button bouton;
     @FXML
-    private ImageView defenseCatapulte;
+    private ImageView jouerSon;
+	@FXML
+	private Pane pane;
     @FXML
-    private ImageView defenseChevalier;
-    @FXML
-    private ImageView defenseArcher;
-    @FXML
-    private ImageView defenseMage;
+    private Label pvButin;
     
-	private int numVague=2;
-	private boolean clicSurArcher = false;
-	private boolean clicSurCatapulte = false;
-	private boolean clicSurMage = false;
-	private boolean clicSurChevalier = false;
-	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		partie = new Jeu();
@@ -85,37 +71,41 @@ public class Controleur implements Initializable {
 		gameLoop.play();
 		
 	}
-	
+
 	private void initialiserGameLoop() {
 		this.gameLoop = new Timeline();
 		this.gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
 		KeyFrame frame = new KeyFrame(Duration.seconds(0.016),
 		(ev -> {
-
-				partie.vague(numVague);
-				partieVue.setup(numVague);
-				//System.out.println(partie.getEnnemisEnJeu());
-				//System.out.println(partieVue.sprites());	
-				//System.out.println(partie.getPvButin());
-				for(Ennemi e: partie.getEnnemisEnJeu()) {
-					e.seDeplace();
-					partieVue.getEnnemiVue(e).deplacementSprite();
-					if(e.butAtteint()) {
-						e.meurt();
-						//System.out.println(e +" dead");
-						
-						partie.getASupprimer().add(e);	
-						partie.decrementerPvButin(e.getAttaqueSurButin());
-						
-					}
+			partie.vague(numVague);
+			partieVue.setup(numVague);
+			for(Ennemi e: partie.getEnnemisEnJeu()) {
+				e.seDeplace();
+				partieVue.getEnnemiVue(e).deplacementSprite();
+				
+				if(e.butAtteint()) {
+					e.meurt();
+					partie.getASupprimer().add(e);	
+					partie.decrementerPvButin(e.getAttaqueSurButin());
 				}
 				
-				for(Ennemi e : partie.getASupprimer()) {
-					partieVue.sprites().remove(partieVue.getEnnemiVue(e));
-					partie.getEnnemisEnJeu().remove(e);
-					//System.out.println(e +"dead");
-				}
+				if(!e.estVivant()) {
+                    partie.getASupprimer().add(e);
+                }
+				
+                if(e.butAtteint()) {
+                    e.meurt();
+                    partie.decrementerPvButin(e.getAttaqueSurButin());
+                    pvButin.setText(""+partie.getPvButin());
+                }
+			}
+
+			for(Ennemi e : partie.getASupprimer()) {
+				partieVue.sprites().remove(partieVue.getEnnemiVue(e));
+				partie.getEnnemisEnJeu().remove(e);
+				//System.out.println(e +"dead");
+			}
 		}));
 		gameLoop.getKeyFrames().add(frame);
 	}
@@ -123,39 +113,51 @@ public class Controleur implements Initializable {
 	public void clicTourelle() {
 		defenseArcher.setOnMouseClicked(e ->{clicSurMap(e);
     		this.clicSurArcher = true;
+    		this.idTour = 1;
 		});
 		
 		defenseCatapulte.setOnMouseClicked(e ->{clicSurMap(e);
 			this.clicSurCatapulte = true;
+			this.idTour = 2;
 		});
 		
 		defenseMage.setOnMouseClicked(e ->{clicSurMap(e);
 			this.clicSurMage = true;
+			this.idTour = 3;
 		});
 		
 		defenseChevalier.setOnMouseClicked(e ->{clicSurMap(e);
 			this.clicSurChevalier = true;
+			this.idTour = 4;
 		});
+		
+		quitterJeu.setOnMouseClicked( e -> System.exit(0));
+		
+		jouerSon.setOnMouseClicked(e ->{ 
+			AudioClip note = new AudioClip(this.getClass().getResource("file:/Tower Defense/Tower-Defense/src/app/ressources/sonAmbiance.mp3").toString());
+		note.play();
+		});	
 	}
+	
 	
 	public void clicSurMap(MouseEvent ev) {		
 		for (int i = 0; i < decor.getChildren().size(); i++) {
 			if(decor.getChildren().get(i).getId() == "stone" /*&& testPlace*/){
 				decor.getChildren().get(i).setOnMouseClicked(e ->{
 					Node tuile = (Node) e.getSource();
-					
+
 					if(clicSurArcher == true) {
-						ImageView tourelle = new ImageView("file:Tower Defense/src/app/ressources/archer.png");
+						tourelle = new ImageView("file:Tower Defense/src/app/ressources/archer.png");
 						partie.getDefenses().add(new Archer(ev.getX(),ev.getY()));
-						System.out.println(partie.getDefenses());
 						tourelle.setLayoutX(tuile.getLayoutX());
-						tourelle.setLayoutY(tuile.getLayoutY());					
+						tourelle.setLayoutY(tuile.getLayoutY());
 			            pane.getChildren().add(tourelle);
 			            clicSurArcher = false; 
 					}
 					
 					else if(clicSurCatapulte == true) {
-						ImageView tourelle = new ImageView("file:Tower Defense/src/app/ressources/catapulte.png");
+						
+						tourelle = new ImageView("file:Tower Defense/src/app/ressources/catapulte.png");
 						partie.getDefenses().add(new Catapulte(ev.getX(),ev.getY()));
 						System.out.println(partie.getDefenses());
 						tourelle.setLayoutX(tuile.getLayoutX());
@@ -165,7 +167,7 @@ public class Controleur implements Initializable {
 					}
 					
 					else if(clicSurMage == true) {
-						ImageView tourelle = new ImageView("file:Tower Defense/src/app/ressources/mage.png");
+						tourelle = new ImageView("file:Tower Defense/src/app/ressources/mage.png");
 						partie.getDefenses().add(new Mage(ev.getX(),ev.getY()));
 						System.out.println(partie.getDefenses());
 						tourelle.setLayoutX(tuile.getLayoutX());
@@ -175,7 +177,7 @@ public class Controleur implements Initializable {
 					}
 					
 					else if(clicSurChevalier == true) {
-						ImageView tourelle = new ImageView("file:Tower Defense/src/app/ressources/chevalier.png");
+						tourelle = new ImageView("file:Tower Defense/src/app/ressources/chevalier.png");
 						partie.getDefenses().add(new Chevalier(ev.getX(),ev.getY()));
 						System.out.println(partie.getDefenses());
 						tourelle.setLayoutX(tuile.getLayoutX());
@@ -183,12 +185,8 @@ public class Controleur implements Initializable {
 			            pane.getChildren().add(tourelle);
 			            clicSurChevalier = false; 
 					}
-//					tourelle.setLayoutX(tuile.getLayoutX());
-//					tourelle.setLayoutY(tuile.getLayoutY());					
-//		            pane.getChildren().add(tourelle);
-					
-				});	
+				});
 			}
 		}
-	}   	
+	}
 }

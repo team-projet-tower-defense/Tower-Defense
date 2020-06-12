@@ -118,7 +118,7 @@ public class Jeu {
 	
 	public void decrementerPvButin(int d) {
 		
-		pvButin-=d;
+		pvButin -= d;
 		
 	}
 
