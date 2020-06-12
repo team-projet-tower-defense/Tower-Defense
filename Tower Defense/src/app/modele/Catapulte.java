@@ -4,8 +4,8 @@ import javafx.scene.image.ImageView;
 
 public class Catapulte extends Tour {
 
-	public Catapulte(int x, int y) {
-		super( 300, 30, x, y);
+	public Catapulte(double d, double e) {
+		super( 300, 30, d, e);
 		// TODO Auto-generated constructor stub
 	}
 

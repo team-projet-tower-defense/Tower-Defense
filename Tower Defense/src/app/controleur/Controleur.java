@@ -19,6 +19,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.TilePane;
+
 public class Controleur implements Initializable {
 
 	private CarteVue terrainVue;
@@ -41,30 +47,39 @@ public class Controleur implements Initializable {
 	
 	@FXML
     private Button bouton;
-	
-	@FXML
-    public ImageView defenseArcher;
-	
 	@FXML
 	private Label message;
 	
 	@FXML
     private TextField compteurVie;
 	
+    @FXML
+    private ImageView defenseCatapulte;
+    @FXML
+    private ImageView defenseChevalier;
+    @FXML
+    private ImageView defenseArcher;
+    @FXML
+    private ImageView defenseMage;
+    
 	private int numVague=2;
-
+	private boolean clicSurArcher = false;
+	private boolean clicSurCatapulte = false;
+	private boolean clicSurMage = false;
+	private boolean clicSurChevalier = false;
+	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		partie = new Jeu(/*environnement*/);
+		partie = new Jeu();
 		partieVue = new JeuVue(partie, pane);
 		
 		carte = partie.getCarte();
 		terrainVue= new CarteVue(carte, decor);
-		//environnement = partie.getEnvironnement();
 		
 		terrainVue = new CarteVue(carte, decor);
 		terrainVue.afficherCarte();
 		partie.initialiserVagues(numVague);
+		
 		clicTourelle();
 		initialiserGameLoop();
 		gameLoop.play();
@@ -104,29 +119,76 @@ public class Controleur implements Initializable {
 		}));
 		gameLoop.getKeyFrames().add(frame);
 	}
-	
+	  
 	public void clicTourelle() {
-		defenseArcher.setOnMouseClicked(e ->{clicSurMap(e);});		
+		defenseArcher.setOnMouseClicked(e ->{clicSurMap(e);
+    		this.clicSurArcher = true;
+		});
+		
+		defenseCatapulte.setOnMouseClicked(e ->{clicSurMap(e);
+			this.clicSurCatapulte = true;
+		});
+		
+		defenseMage.setOnMouseClicked(e ->{clicSurMap(e);
+			this.clicSurMage = true;
+		});
+		
+		defenseChevalier.setOnMouseClicked(e ->{clicSurMap(e);
+			this.clicSurChevalier = true;
+		});
 	}
 	
 	public void clicSurMap(MouseEvent ev) {		
-		System.out.println("hahah");
 		for (int i = 0; i < decor.getChildren().size(); i++) {
-			
-			if(decor.getChildren().get(i).getId() == "stone" /*&& verifiePlaceLibre(decor.getChildren().get(i).getLayoutX(), decor.getChildren().get(i).getLayoutY())*/){
+			if(decor.getChildren().get(i).getId() == "stone" /*&& testPlace*/){
 				decor.getChildren().get(i).setOnMouseClicked(e ->{
 					Node tuile = (Node) e.getSource();
-					//System.out.println(jeu.getDefense());
-					ImageView tourelle = new ImageView("file:src/app/ressources/archer.png");
-					partie.getDefenses().add(new Archer(ev.getX(),ev.getY()));
-					System.out.println(partie.getDefenses());
-					tourelle.setLayoutX(tuile.getLayoutX());
-					tourelle.setLayoutY(tuile.getLayoutY());					
-		            pane.getChildren().add(tourelle);
+					
+					if(clicSurArcher == true) {
+						ImageView tourelle = new ImageView("file:Tower Defense/src/app/ressources/archer.png");
+						partie.getDefenses().add(new Archer(ev.getX(),ev.getY()));
+						System.out.println(partie.getDefenses());
+						tourelle.setLayoutX(tuile.getLayoutX());
+						tourelle.setLayoutY(tuile.getLayoutY());					
+			            pane.getChildren().add(tourelle);
+			            clicSurArcher = false; 
+					}
+					
+					else if(clicSurCatapulte == true) {
+						ImageView tourelle = new ImageView("file:Tower Defense/src/app/ressources/catapulte.png");
+						partie.getDefenses().add(new Catapulte(ev.getX(),ev.getY()));
+						System.out.println(partie.getDefenses());
+						tourelle.setLayoutX(tuile.getLayoutX());
+						tourelle.setLayoutY(tuile.getLayoutY());
+			            pane.getChildren().add(tourelle);
+			            clicSurCatapulte = false; 
+					}
+					
+					else if(clicSurMage == true) {
+						ImageView tourelle = new ImageView("file:Tower Defense/src/app/ressources/mage.png");
+						partie.getDefenses().add(new Mage(ev.getX(),ev.getY()));
+						System.out.println(partie.getDefenses());
+						tourelle.setLayoutX(tuile.getLayoutX());
+						tourelle.setLayoutY(tuile.getLayoutY());					
+			            pane.getChildren().add(tourelle);
+			            clicSurMage = false; 
+					}
+					
+					else if(clicSurChevalier == true) {
+						ImageView tourelle = new ImageView("file:Tower Defense/src/app/ressources/chevalier.png");
+						partie.getDefenses().add(new Chevalier(ev.getX(),ev.getY()));
+						System.out.println(partie.getDefenses());
+						tourelle.setLayoutX(tuile.getLayoutX());
+						tourelle.setLayoutY(tuile.getLayoutY());					
+			            pane.getChildren().add(tourelle);
+			            clicSurChevalier = false; 
+					}
+//					tourelle.setLayoutX(tuile.getLayoutX());
+//					tourelle.setLayoutY(tuile.getLayoutY());					
+//		            pane.getChildren().add(tourelle);
+					
 				});	
 			}
 		}
-	}
-
-    	
+	}   	
 }

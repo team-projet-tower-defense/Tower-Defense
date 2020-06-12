@@ -4,8 +4,8 @@ import javafx.scene.image.ImageView;
 
 public class Chevalier extends Tour{
 
-	public Chevalier(int x, int y) {
-		super(500, 60, x, y);
+	public Chevalier(double d, double e) {
+		super(500, 60, d, e);
 		// TODO Auto-generated constructor stub
 	}
 
