@@ -126,9 +126,9 @@ public class Jeu {
 		return nbDiamants;
 	}
 
-	public void incrementerDiamant(int v) {
+	public void incrementerDiamant(double d) {
 		if(nbDiamants<30)
-		nbDiamants +=v;
+		nbDiamants +=d;
 		
 	}
 

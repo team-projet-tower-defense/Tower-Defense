@@ -1,28 +1,22 @@
 package app.modele;
 
-import java.util.Random;
-
-import app.vue.CarteVue;
-import app.vue.EnnemiVue;
-import javafx.scene.Group;
-import javafx.scene.image.ImageView;
-
 public abstract class Ennemi {
 	
+	private int attaqueSurButin;
+	private double vitesse;
+	private int attaque;
 	private double x;
 	private double y;
 	private int pv;
-	private int attaque;
-	private double vitesse;
-	private int attaqueSurButin;
-	
+
 	public Ennemi(int p, int a, int aB ,double v) {
 		this.pv = p;
 		this.attaque = a;
 		this.vitesse = v;
-		this.attaqueSurButin=aB;
+		this.attaqueSurButin = aB;
 		this.x = 0;
 		int hautOuBas = (int)(Math.random()*3);
+		
 		if(hautOuBas ==0) {
 			y=416;
 		}
@@ -34,8 +28,6 @@ public abstract class Ennemi {
 		else {
 			y=480;
 		}
-		
-		//this.environnement = env;
 	}
 
 	public int butin() {
@@ -56,17 +48,15 @@ public abstract class Ennemi {
 			return 3;
 		}
 		
-		else/* if (this instanceof Squelette)*/ { 
+		else{ 
 			return 2;
-		}
-		
+		}	
 	}
 	
 	public int getAttaqueSurButin() {
+		
 		return attaqueSurButin;
 	}
-	
-	public abstract void agit();
 	
 	public double getX() {
 		return x;
@@ -84,15 +74,15 @@ public abstract class Ennemi {
 		y = d;
 	}
 	
-	public void decrementerPv(int n) {
-		if(pv-n>0) {
-			this.pv -= n;
+	public void decrementerPv(double attaque2) {
+		
+		if(pv-attaque2>0) {
+			this.pv -= attaque2;
 		}
 		
 		else {
 			pv = 0;
 		}
-		
 	}
 
 	public void incrementerPv(int n) {
@@ -105,7 +95,7 @@ public abstract class Ennemi {
 	}
 
 	public boolean estVivant() {
-		return /*this.x < 928 ||*/ pv>0;
+		return pv > 0;
 	}
 
 	public void meurt(){
@@ -120,7 +110,7 @@ public abstract class Ennemi {
 	public void seDeplace(/*int choixChemin*/) {
 		
 
-        //if(choixChemin == 1) {
+//        if(choixChemin == 1) {
 
             if((x<=224) && (y>=416 &&y<=512)) {
                 this.setX(x + vitesse);
@@ -143,58 +133,59 @@ public abstract class Ennemi {
             else if(x<928 && y==160) {
                 this.setX(x + vitesse);
             }
-       /* }
-        else if(choixChemin == 2) {
-
-            if(this.x<256 && this.y==416) {
-                this.setX(x + this.vitesse);
-            }
-            else if(this.x==257 && this.y > 128) {
-                this.setY(y - this.vitesse);
-            }
-            else if(this.x < 512 && this.y==128) {
-                this.setX(x + this.vitesse);
-            }
-            else if(this.x==513 && this.y < 416) {
-                this.setY(y + this.vitesse);
-            }
-            else if(this.x<768 && this.y==416) {
-                this.setX(x + this.vitesse);
-            }
-            else if(this.x==769 && this.y > 128) {
-                this.setY(y - this.vitesse);
-            }
-            else if(this.x<928 && this.y==128) {
-                this.setX(x + this.vitesse);
-            }
-        }
-        else if(choixChemin == 3) {
-
-            if(this.x<192 && this.y==480) {
-                this.setX(x + this.vitesse);
-            }
-            else if(this.x==193 && this.y > 192) {
-                this.setY(y - this.vitesse);
-            }
-            else if(this.x < 448 && this.y==192) {
-                this.setX(x + this.vitesse);
-            }
-            else if(this.x==449 && this.y < 480) {
-                this.setY(y + this.vitesse);
-            }
-            else if(this.x<704 && this.y==480) {
-                this.setX(x + this.vitesse);
-            } 
-            else if(this.x==705 && this.y > 192) {
-                this.setY(y - this.vitesse);
-            }
-            else if(this.x<928 && this.y==192) {
-                this.setX(x + this.vitesse);
-            }
-        }*/
+//       }
+        
+//        else if(choixChemin == 2) {
+//
+//            if(this.x<256 && this.y==416) {
+//                this.setX(x + this.vitesse);
+//            }
+//            else if(this.x==257 && this.y > 128) {
+//                this.setY(y - this.vitesse);
+//            }
+//            else if(this.x < 512 && this.y==128) {
+//                this.setX(x + this.vitesse);
+//            }
+//            else if(this.x==513 && this.y < 416) {
+//                this.setY(y + this.vitesse);
+//            }
+//            else if(this.x<768 && this.y==416) {
+//                this.setX(x + this.vitesse);
+//            }
+//            else if(this.x==769 && this.y > 128) {
+//                this.setY(y - this.vitesse);
+//            }
+//            else if(this.x<928 && this.y==128) {
+//                this.setX(x + this.vitesse);
+//            }
+//        }
+        
+//        else if(choixChemin == 3) {
+//
+//            if(this.x<192 && this.y==480) {
+//                this.setX(x + this.vitesse);
+//            }
+//            else if(this.x==193 && this.y > 192) {
+//                this.setY(y - this.vitesse);
+//            }
+//            else if(this.x < 448 && this.y==192) {
+//                this.setX(x + this.vitesse);
+//            }
+//            else if(this.x==449 && this.y < 480) {
+//                this.setY(y + this.vitesse);
+//            }
+//            else if(this.x<704 && this.y==480) {
+//                this.setX(x + this.vitesse);
+//            } 
+//            else if(this.x==705 && this.y > 192) {
+//                this.setY(y - this.vitesse);
+//            }
+//            else if(this.x<928 && this.y==192) {
+//                this.setX(x + this.vitesse);
+//            }
+//        }
     }
 
-	
 	public String toString() {
 		return  "  x=" + x + " pv: " + pv;
 	}

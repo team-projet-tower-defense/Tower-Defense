@@ -14,8 +14,8 @@ import javafx.scene.shape.Circle;
 
 public class CarteVue {
 	
+	private TilePane decor;
 	private Carte carte;
-	private TilePane decor ;
 	
 	public CarteVue(Carte c, TilePane d) {
 		carte= c;
@@ -45,18 +45,15 @@ public class CarteVue {
 						ajouterImage("stone.png");
 						break;
 					case 12:
-						ajouterImage("diamond.png");
-						break;
-						
+						ajouterImage("blockDiamant.png");
+						break;		
 				}
-
 			}
 		}
 	}
 	
-	
 	public void ajouterImage(String URL) {
-		ImageView  img = new ImageView("file:src/app/ressources/"+URL);
+		ImageView  img = new ImageView("file:Tower Defense/src/app/ressources/"+URL);
 		if(URL == "stone.png") {
 			img.setId("stone");
 		}

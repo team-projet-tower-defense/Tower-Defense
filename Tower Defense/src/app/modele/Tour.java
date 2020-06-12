@@ -1,30 +1,21 @@
 package app.modele;
 
-import javafx.scene.Group;
-import javafx.scene.image.ImageView;
-
 public abstract class Tour {
 	
 	private int pv;
-	private int attaque;
+	private double attaque;
 	private double x,y;
 	
-	
-	public Tour(int p, int a, double d, double e) {
+	public Tour(int p, double a, double d, double e) {
 		pv = p;
 		attaque = a;
 		this.x = d;
-		this.y = e;
-		
+		this.y = e;	
 	}
-	
-	public abstract void agit();
 	
 	public void attaque(Ennemi e) {
 		if(Math.sqrt(Math.pow(e.getX()-x, 2)+Math.pow(e.getY()-y,2))<=96) {
-			
 			e.decrementerPv(attaque);
-			
 		}
 	}
 	
@@ -42,18 +33,18 @@ public abstract class Tour {
 			return 5;
 		}
 		
-		else/* if (this instanceof Catapulte)*/ { 
+		else { 
 			return 10;
 		}	
 		
 	}
 	
 	public void recevoirDegats(int d) {
-		pv-=d;
+		pv -= d;
 	}
 	
 	public boolean estEnVie() {
-		if(pv!=0) {
+		if(pv != 0) {
 			return true;
 		}
 		return false;
@@ -70,5 +61,4 @@ public abstract class Tour {
 	public String toString() {
 		return "x: " + x +" y: "+y;
 	}
-
 }

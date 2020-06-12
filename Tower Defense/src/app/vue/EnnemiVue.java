@@ -16,34 +16,29 @@ public class EnnemiVue {
 	private Pane pane;
 	
 	public EnnemiVue(Ennemi e, Pane p) {
-		this.ennemi=e;
-		this.pane =p;
+		this.ennemi = e;
+		this.pane = p;
 	}
 	
 	private void attribuerImageEnnemi() {
 		if (ennemi instanceof Zombie) { 
-			sprite = new ImageView("file:src/app/ressources/zombie.png");
-		//	pane.getChildren().add(s);
+			sprite = new ImageView("file:Tower Defense/src/app/ressources/zombie.png");
 		}
 		
 		else if (ennemi instanceof Sorciere) { 
-			sprite = new ImageView("file:src/app/ressources/sorciere.png");
-		//	pane.getChildren().add(s);
+			sprite = new ImageView("file:Tower Defense/src/app/ressources/sorciere.png");
 		}
 		
 		else if (ennemi instanceof Wither) { 
-			sprite = new ImageView("file:src/app/ressources/wither.png");
-		//	pane.getChildren().add(s);
+			sprite = new ImageView("file:Tower Defense/src/app/ressources/wither.png");
 		}
 		
 		else if (ennemi instanceof Pigman) { 
-			sprite = new ImageView("file:src/app/ressources/pigman.png");
-		//	pane.getChildren().add(s);
+			sprite = new ImageView("file:Tower Defense/src/app/ressources/pigman.png");
 		}
 		
-		else if  (ennemi instanceof Squelette) { 
-			sprite = new ImageView("file:src/app/ressources/squelette.png");
-		//	pane.getChildren().add(s);
+		else if  (ennemi instanceof Squelette) {
+			sprite = new ImageView("file:Tower Defense/src/app/ressources/squelette.png");
 		}	
 	}
 	
@@ -73,11 +68,5 @@ public class EnnemiVue {
 
 	public void setNull() {
 		this.sprite= null;
-		
 	}
-	
-	//public String toString() {
-		//return "exists " + ennemi;
-	//}
-
 }
