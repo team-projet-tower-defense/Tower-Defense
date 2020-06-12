@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-     
+
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
@@ -19,7 +17,7 @@
       <StackPane prefHeight="640.0" prefWidth="960.0" BorderPane.alignment="CENTER">
          <children>
             <TilePane fx:id="decor" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pane" focusTraversable="true" mouseTransparent="true" prefHeight="200.0" prefWidth="200.0" />
          </children>
       </StackPane>
    </center>
@@ -28,7 +26,7 @@
          <children>
             <TextField layoutX="19.0" layoutY="41.0" prefHeight="40.0" prefWidth="107.0" style="-fx-font-weight: bold;" text="8 000" />
             <Text fill="#9f6608" layoutX="66.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="/  8 000" wrappingWidth="55.98307228088379" />
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="236.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Catapulte" fitHeight="60.0" fitWidth="60.0" layoutX="236.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../ressources/catapulte2.png" />
                </image>
@@ -38,7 +36,7 @@
                   <Image url="@../ressources/chevalier2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="146.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="defenseArcher" fitHeight="60.0" fitWidth="60.0" layoutX="146.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../ressources/archer2.png" />
                </image>
@@ -48,7 +46,7 @@
                   <Image url="@../ressources/mage2.png" />
                </image>
             </ImageView>
-            <ProgressBar layoutX="144.0" layoutY="92.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="20.0" prefWidth="430.0" style="-fx-background-color: green;">
+            <ProgressBar layoutX="144.0" layoutY="92.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="20.0" prefWidth="430.0" progress="0.69" style="-fx-background-color: green;">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor></ProgressBar>
@@ -62,11 +60,11 @@
             <Text layoutX="328.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15 diams" />
             <Text layoutX="421.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20 diams" />
             <Text layoutX="517.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Destroy" />
-            <ImageView fitHeight="110.0" fitWidth="110.0" layoutX="601.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="110.0" fitWidth="110.0" layoutX="607.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../ressources/chronometre.png" />
                </image></ImageView>
-            <ProgressBar layoutX="628.0" layoutY="52.0" prefHeight="20.0" prefWidth="56.0" progress="1.0" />
+            <ProgressBar layoutX="635.0" layoutY="51.0" prefHeight="20.0" prefWidth="56.0" progress="1.0" />
             <Text fill="#9f6608" layoutX="724.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Mode" />
             <Text fill="#9f6608" layoutX="724.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Round" />
             <TextField layoutX="778.0" layoutY="24.0" prefHeight="26.0" prefWidth="95.0" />
@@ -81,8 +79,6 @@
                   <Image url="@../ressources/home.png" />
                </image>
             </ImageView>
-            <Button layoutX="40.0" layoutY="13.0" mnemonicParsing="false" text="Button" />
-            <Label layoutX="40.0" layoutY="89.0" prefHeight="18.0" prefWidth="61.0" text="--" />
          </children>
          <effect>
             <Blend />
