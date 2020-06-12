@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.input.MouseEvent;
 
 public class CarteVue {
 	
@@ -21,7 +22,7 @@ public class CarteVue {
 		carte= c;
 		decor= d;
 	}
-	
+// Mettre en switch case
 	public void afficherCarte() {
 		for (int x = 0; x < carte.getHauteur(); x++) {
 			for (int y = 0; y < carte.getLargeur(); y++) {
@@ -29,6 +30,7 @@ public class CarteVue {
 				int codeCase = carte.getCase(x, y);
 
 				if (codeCase == 6) {
+					
 					ajouterImage("sable.png");
 				}
 
@@ -46,13 +48,16 @@ public class CarteVue {
 				
 				else if (codeCase == 11) {
 					ajouterImage("stone.png");
-				}
-				
+				}	
 			}
 		}
 	}
 	
-	private void ajouterImage(String URL) {
-		decor.getChildren().add(new ImageView("file:Tower Defense/src/app/ressources/"+URL));
+	public void ajouterImage(String URL) {
+		ImageView  img = new ImageView("file:Tower Defense/src/app/ressources/"+URL);
+		if(URL == "stone.png") {
+			img.setId("stone");
+		}
+		decor.getChildren().add(img);		
 	}
 }
