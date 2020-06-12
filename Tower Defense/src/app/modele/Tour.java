@@ -8,7 +8,7 @@ public abstract class Tour {
 	private int pv;
 	private int attaque;
 	private double x,y;
-	private ImageView sprite;
+	
 	
 	public Tour(int p, int a, double d, double e) {
 		pv = p;
@@ -20,8 +20,12 @@ public abstract class Tour {
 	
 	public abstract void agit();
 	
-	public int attaque(Ennemi e) {
-		return attaque;
+	public void attaque(Ennemi e) {
+		if(Math.sqrt(Math.pow(e.getX()-x, 2)+Math.pow(e.getY()-y,2))<=96) {
+			
+			e.decrementerPv(attaque);
+			
+		}
 	}
 	
 	public int ressourcesDiamant() {
@@ -48,10 +52,6 @@ public abstract class Tour {
 		pv-=d;
 	}
 	
-	public ImageView getSprite() {
-		return sprite;
-	}
-	
 	public boolean estEnVie() {
 		if(pv!=0) {
 			return true;
@@ -67,8 +67,8 @@ public abstract class Tour {
 		return y;
 	}
 	
-	public void setSprite(ImageView s) {
-		sprite=s;
+	public String toString() {
+		return "x: " + x +" y: "+y;
 	}
 
 }

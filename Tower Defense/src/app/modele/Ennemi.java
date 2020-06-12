@@ -14,13 +14,13 @@ public abstract class Ennemi {
 	private int pv;
 	private int attaque;
 	private double vitesse;
-	//protected Environnement environnement;
 	private int attaqueSurButin;
 	
-	public Ennemi(int p, int a, int aB ,double v/*,Environnement env*/) {
+	public Ennemi(int p, int a, int aB ,double v) {
 		this.pv = p;
 		this.attaque = a;
 		this.vitesse = v;
+		this.attaqueSurButin=aB;
 		this.x = 0;
 		int hautOuBas = (int)(Math.random()*3);
 		if(hautOuBas ==0) {
@@ -85,19 +85,27 @@ public abstract class Ennemi {
 	}
 	
 	public void decrementerPv(int n) {
-		this.pv -= n;	
+		if(pv-n>0) {
+			this.pv -= n;
+		}
+		
+		else {
+			pv = 0;
+		}
+		
 	}
 
 	public void incrementerPv(int n) {
+		
 		this.pv += n;	
 	}
 	
 	public boolean butAtteint() {
-		return this.x == 928 ;
+		return this.x >= 928 ;
 	}
 
 	public boolean estVivant() {
-		return this.x < 928 ;
+		return /*this.x < 928 ||*/ pv>0;
 	}
 
 	public void meurt(){

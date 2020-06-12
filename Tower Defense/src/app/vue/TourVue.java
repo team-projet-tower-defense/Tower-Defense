@@ -11,62 +11,59 @@ import app.modele.Squelette;
 import app.modele.Tour;
 import app.modele.Wither;
 import app.modele.Zombie;
-import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class TourVue {
 	
-	public ImageView sprite;
-	@FXML
-	private Pane pane1;
+private ImageView sprite;
 	
 	private Pane pane;
+	
 	private Tour tour;
 	
 	public TourVue(Tour t, Pane p) {
 		this.tour=t;
 		this.pane =p;
+		this.creerSpriteTour();
 	}
 	
-//	public String attribuerImageEnnemi(int idTour) {
-//		
-//		String URLImage = null;
-//		
-//		if (idTour == 1) { 
-//			URLImage = "file:Tower Defense/src/app/ressources/archer.png";
-//		}
-//		
-//		else if (idTour == 2) { 
-//			URLImage = "file:Tower Defense/src/app/ressources/mage.png";
-//		}
-//		
-//		else if (idTour == 3) { 
-//			URLImage = "file:Tower Defense/src/app/ressources/catapulte.png";
-//		}
-//		
-//		else if (idTour == 4) { 
-//			URLImage = "file:Tower Defense/src/app/ressources/chevalier.png";
-//		}
-//		
-//		return URLImage;		
-//	}
+	private void attribuerImageEnnemi() {
 	
-//	public void creerSpriteTour() {
-//		
-//		this.attribuerImageEnnemi();
-//		sprite.setTranslateX(tour.getX());
-//		sprite.setTranslateY(tour.getY());
-//		pane.getChildren().add(sprite);
-//		
-//	}
-//	
-//	public void deplacementSprite() {
-//		sprite.setTranslateX(tour.getX());
-//		sprite.setTranslateY(tour.getY());
-//	}
+		
+		if (tour instanceof Archer ) { 
+			sprite = new ImageView("file:src/app/ressources/archer.png");
+		//	pane.getChildren().add(s);
+		}
+		else if (tour instanceof Mage) { 
+			sprite = new ImageView("file:src/app/ressources/mage2.png");
+		//	pane.getChildren().add(s);
+		}
+		else if (tour instanceof Catapulte) { 
+			sprite = new ImageView("file:src/app/ressources/catapulte.png");
+		//	pane.getChildren().add(s);
+		}
+		else if (tour instanceof Chevalier) { 
+			sprite = new ImageView("file:src/app/ressources/chevalier.png");
+		//	pane.getChildren().add(s);
+		}	
+		
+			
+	}
+	
+	public void creerSpriteTour() {
+		
+		this.attribuerImageEnnemi();
+		sprite.setTranslateX(tour.getX());
+		sprite.setTranslateY(tour.getY());
+		pane.getChildren().add(sprite);
+		
+	}
+	
+	public void deplacementSprite() {
+		sprite.setTranslateX(tour.getX());
+		sprite.setTranslateY(tour.getY());
+	}
 	
 	public void setSprite(ImageView s) {
 		sprite=s;

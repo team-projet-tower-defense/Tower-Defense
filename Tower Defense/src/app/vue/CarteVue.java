@@ -45,7 +45,8 @@ public class CarteVue {
 						ajouterImage("stone.png");
 						break;
 					case 12:
-						ajouterImage("blockDiamant.png");
+						ajouterImage("diamond.png");
+						break;
 						
 				}
 
@@ -55,7 +56,7 @@ public class CarteVue {
 	
 	
 	public void ajouterImage(String URL) {
-		ImageView  img = new ImageView("file:Tower Defense/src/app/ressources/"+URL);
+		ImageView  img = new ImageView("file:src/app/ressources/"+URL);
 		if(URL == "stone.png") {
 			img.setId("stone");
 		}

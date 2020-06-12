@@ -70,6 +70,11 @@ public class EnnemiVue {
 	public Ennemi getEnnemi() {
 		return ennemi;
 	}
+
+	public void setNull() {
+		this.sprite= null;
+		
+	}
 	
 	//public String toString() {
 		//return "exists " + ennemi;

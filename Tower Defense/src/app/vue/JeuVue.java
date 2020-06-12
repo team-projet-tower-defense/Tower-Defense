@@ -12,7 +12,7 @@ public class JeuVue {
 
 	private Pane pane;
 	
-	private ArrayList<EnnemiVue> sprites;
+	private ArrayList<EnnemiVue> spritesEnnemis;
 	
 	private int compteur = 0;
 	
@@ -20,7 +20,7 @@ public class JeuVue {
 		pane=p;
 		partie=j;
 	
-		sprites = new ArrayList();
+		spritesEnnemis = new ArrayList();
 	}
 		
 	public void setup(int choix) {
@@ -28,18 +28,18 @@ public class JeuVue {
 		if(compteur<partie.getEnnemisEnJeu().size()) {
 		EnnemiVue sprite =new EnnemiVue(partie.getEnnemisEnJeu().get(partie.getEnnemisEnJeu().size()-1),pane);
 		sprite.creerSpriteEnnemi();
-		sprites.add(sprite);
+		spritesEnnemis.add(sprite);
 		compteur++;
 		}
 	}
 	
-	public ArrayList<EnnemiVue> sprites(){
-		return sprites;
+	public ArrayList<EnnemiVue> spritesEnnemis(){
+		return spritesEnnemis;
 	}
 	
 	public EnnemiVue getEnnemiVue(Ennemi e) {
 		
-		for(EnnemiVue eV : sprites) {
+		for(EnnemiVue eV : spritesEnnemis) {
 			if(eV.getEnnemi().equals(e)) {
 				return eV;
 			}

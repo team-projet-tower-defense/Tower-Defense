@@ -7,33 +7,22 @@ public class Jeu {
 	private ArrayList<Tour> defenses = new ArrayList() ;
 	
 	private Carte carte; 
-	
-	//private Environnement env;
-	
+
 	private int pvButin = 8000;
+	
+	private double nbDiamants = 0;
 	
 	private ArrayList<Ennemi> aSupprimer = new ArrayList();
 	
-	private ArrayList<Ennemi> vague0 = new ArrayList();
+	private ArrayList<Ennemi> vague0,vague1,vague2,vague3,vague4 = new ArrayList();
 	
-	private ArrayList<Ennemi>  vague1 = new ArrayList();
-	
-	private ArrayList<Ennemi> vague2 = new ArrayList();
-	
-	private ArrayList<Ennemi> vague3= new ArrayList() ;
-	
-	private ArrayList<Ennemi> vague4 = new ArrayList();
-	
-	private ArrayList<ArrayList<Ennemi>> vagues = new ArrayList<ArrayList<Ennemi>>(); //{/*vague1,vague2,vague3,vague4,vague5*/} */ 
+	private ArrayList<ArrayList<Ennemi>> vagues = new ArrayList<ArrayList<Ennemi>>();
 	
 	private ArrayList<Ennemi> ennemisEnJeu = new ArrayList();
 	
-	public Jeu(/*Environnement e*/) {
+	public Jeu() {
 		
-		carte= new Carte();
-		
-		//env=new Environnement(carte);
-		
+		carte= new Carte();		
 		ennemisEnJeu=new ArrayList();
 	}
 	
@@ -42,34 +31,34 @@ public class Jeu {
 		vagues.add(vague1);
 		vagues.add(vague2);
 		vagues.add(vague3);
-		 vagues.add(vague4);
+		vagues.add(vague4);
 		switch(choix) {
 		
 		 case 0:
 			 for(int i = 0; i<3 ;i++) {
-				 vague0.add(new Zombie(/*env*/));
+				 vague0.add(new Zombie());
 			 }
 			 
 		 case 1:
 			 for(int i = 0; i<5; i++) {
-				 vague1.add(new Zombie(/*env*/));
-				 vague1.add(new Squelette(/*env*/));
+				 vague1.add(new Zombie());
+				 vague1.add(new Squelette());
 				 vagues.add(vague0);
 			 }
 		 case 2:
 			 for(int i = 0; i<8; i++){
-				 vague2.add(new Zombie(/*env*/));
-				 vague2.add(new Squelette(/*env*/));
+				 vague2.add(new Zombie());
+				 vague2.add(new Squelette());
 				 if(i<3) 
-					 vague2.add(new Pigman(/*env*/));
+					 vague2.add(new Pigman());
 			 }
 			 
 		 case 3:
 			 for(int i = 0; i<12; i++) {
-				vague3.add(new Zombie(/*env*/));
-				 vague3.add(new Squelette(/*env*/));
+				vague3.add(new Zombie());
+				 vague3.add(new Squelette());
 				 if(i<5) {
-					vague3.add(new Pigman(/*env*/));
+					vague3.add(new Pigman());
 				 }
 			  }
 			 
@@ -85,9 +74,7 @@ public class Jeu {
 			 }
 			 vague4.add(new Wither(/*env*/));
 			
-		}	
-		
-		
+		}		
 	}
 	
 	public void vague(int choix) {
@@ -117,8 +104,12 @@ public class Jeu {
 	}
 	
 	public void decrementerPvButin(int d) {
-		
-		pvButin -= d;
+		if(pvButin - d >0) {
+			pvButin-=d;
+		}
+		else {
+			pvButin=0;
+		}
 		
 	}
 
@@ -130,11 +121,23 @@ public class Jeu {
 		return defenses;
 	}
 
-/*	public Environnement getEnvironnement() {
-		return env;
-	}*/
-	
-	
+	public double getNbDiamant() {
+		// TODO Auto-generated method stub
+		return nbDiamants;
+	}
+
+	public void incrementerDiamant(int v) {
+		if(nbDiamants<30)
+		nbDiamants +=v;
+		
+	}
+
+	public void decrementerDiamant(int v) {
+		if(nbDiamants>=v) {
+			nbDiamants-=v;
+		}
+		
+	}
 
 }
 
