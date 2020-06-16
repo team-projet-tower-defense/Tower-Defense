@@ -1,6 +1,6 @@
 package app.modele;
 
-public abstract class Ennemi {
+public class Ennemi {
 	
 	private int attaqueSurButin;
 	private double vitesse;
