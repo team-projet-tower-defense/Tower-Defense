@@ -20,8 +20,8 @@ public class JeuVue {
 	}
 		
 	public void setup(int choix) {
-		if(compteur<partie.getEnnemisEnJeu().size()) {
-		EnnemiVue sprite =new EnnemiVue(partie.getEnnemisEnJeu().get(partie.getEnnemisEnJeu().size()-1),pane);
+		if(compteur < partie.getEnnemisEnJeu().size()) {
+		EnnemiVue sprite = new EnnemiVue(partie.getEnnemisEnJeu().get(partie.getEnnemisEnJeu().size()-1),pane);
 		sprite.creerSpriteEnnemi();
 		spritesEnnemis.add(sprite);
 		compteur++;

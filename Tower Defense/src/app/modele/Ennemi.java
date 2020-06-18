@@ -1,12 +1,11 @@
 package app.modele;
 
-public abstract class Ennemi {
+public class Ennemi {
 	
 	private int attaqueSurButin;
 	private double vitesse;
 	private int attaque;
-	private double x;
-	private double y;
+	private double x, y;
 	private int pv;
 
 	public Ennemi(int p, int a, int aB ,double v) {
@@ -48,7 +47,7 @@ public abstract class Ennemi {
 			return 3;
 		}
 		
-		else{ 
+		else { 
 			return 2;
 		}	
 	}

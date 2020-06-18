@@ -64,17 +64,16 @@ public class Controleur implements Initializable {
     @FXML
     private ImageView jouerSon;
 
-
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		partie = new Jeu();
 		partieVue = new JeuVue(partie, pane);
 		carte = partie.getCarte();
-		terrainVue= new CarteVue(carte, decor);		
+		terrainVue = new CarteVue(carte, decor);		
 		terrainVue = new CarteVue(carte, decor);
 		terrainVue.afficherCarte();
 		partie.initialiserVagues(numVague);
-		compteDiamant=new ProgressBar(30);
+		compteDiamant = new ProgressBar(30);
 		
 		clicTourelle();
 		initialiserGameLoop();
@@ -85,7 +84,7 @@ public class Controleur implements Initializable {
 		
 		this.gameLoop = new Timeline();
 		this.gameLoop.setCycleCount(Timeline.INDEFINITE);
-		KeyFrame frame = new KeyFrame(Duration.seconds(0.08),
+		KeyFrame frame = new KeyFrame(Duration.seconds(0.016),
 		(ev -> {
 			if(partie.getPvButin() > 0) {
 				compteDiamant.setProgress(partie.getNbDiamant());
@@ -129,7 +128,7 @@ public class Controleur implements Initializable {
 		}));
 		gameLoop.getKeyFrames().add(frame);
 	}
-	
+
 	public void clicTourelle() {
 		defenseArcher.setOnMouseClicked(e ->{clicSurMap(e);
     		this.clicSurArcher = true;
@@ -153,7 +152,6 @@ public class Controleur implements Initializable {
 //			AudioClip note = new AudioClip(this.getClass().getResource("file:/Tower Defense/Tower-Defense/src/app/ressources/sonAmbiance.mp3").toString());
 //			note.play();
 //		});
-		
 	}
 	
 	public void clicSurMap(MouseEvent ev) {		
@@ -165,40 +163,40 @@ public class Controleur implements Initializable {
 					if(clicSurArcher == true) {
                         Archer archer = new Archer(tuile.getLayoutX(),tuile.getLayoutY());
                         if( partie.getNbDiamant()>=archer.ressourcesDiamant()) {
-                        partie.getDefenses().add(archer);
-                        TourVue tourelle=new TourVue(archer, pane);
-                        partie.decrementerDiamant(archer.ressourcesDiamant());
-                        clicSurArcher = false;
+                        	partie.getDefenses().add(archer);
+                        	TourVue tourelle = new TourVue(archer, pane);
+                        	partie.decrementerDiamant(archer.ressourcesDiamant());
+                        	clicSurArcher = false;
                         }
                     }
 
                     else if(clicSurCatapulte == true) {
                         Catapulte catapulte = new Catapulte(tuile.getLayoutX(),tuile.getLayoutY());
                         if( partie.getNbDiamant()>=catapulte.ressourcesDiamant()) {
-                        partie.getDefenses().add(catapulte);
-                        TourVue tourelle=new TourVue(catapulte, pane);
-                        partie.decrementerDiamant(catapulte.ressourcesDiamant());
-                        clicSurCatapulte= false;
+                        	partie.getDefenses().add(catapulte);
+                        	TourVue tourelle = new TourVue(catapulte, pane);
+                        	partie.decrementerDiamant(catapulte.ressourcesDiamant());
+                        	clicSurCatapulte= false;
                         }
                     }
 
                     else if(clicSurMage == true) {
                         Mage mage = new Mage(tuile.getLayoutX(),tuile.getLayoutY());
                         if( partie.getNbDiamant()>=mage.ressourcesDiamant()) {
-                        partie.getDefenses().add(mage);
-                        TourVue tourelle=new TourVue(mage, pane);
-                        partie.decrementerDiamant(mage.ressourcesDiamant());
-                        clicSurMage= false;
+                        	partie.getDefenses().add(mage);
+                        	TourVue tourelle=new TourVue(mage, pane);
+                        	partie.decrementerDiamant(mage.ressourcesDiamant());
+                        	clicSurMage= false;
                         }
                     }
 					
                     else if(clicSurChevalier == true) {
                         Chevalier chevalier = new Chevalier(tuile.getLayoutX(),tuile.getLayoutY());
                         if( partie.getNbDiamant()>=chevalier.ressourcesDiamant()) {
-                        partie.getDefenses().add(chevalier);
-                        TourVue tourelle=new TourVue(chevalier, pane);
-                        partie.decrementerDiamant(chevalier.ressourcesDiamant());
-                        clicSurChevalier= false;
+                        	partie.getDefenses().add(chevalier);
+                        	TourVue tourelle=new TourVue(chevalier, pane);
+                        	partie.decrementerDiamant(chevalier.ressourcesDiamant());
+                        	clicSurChevalier= false;
                         }
                     }
 				});	

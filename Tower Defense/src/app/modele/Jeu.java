@@ -4,26 +4,18 @@ import java.util.ArrayList;
 
 public class Jeu {
 	
-	private ArrayList<Tour> defenses = new ArrayList() ;
-	
 	private Carte carte; 
-
 	private int pvButin = 8000;
-	
 	private double nbDiamants = 0;
-	
+	private ArrayList<Tour> defenses = new ArrayList() ;
 	private ArrayList<Ennemi> aSupprimer = new ArrayList();
-	
-	private ArrayList<Ennemi> vague0,vague1,vague2,vague3,vague4 = new ArrayList();
-	
-	private ArrayList<ArrayList<Ennemi>> vagues = new ArrayList<ArrayList<Ennemi>>();
-	
 	private ArrayList<Ennemi> ennemisEnJeu = new ArrayList();
-	
-	public Jeu() {
-		
+	private ArrayList<Ennemi> vague0,vague1,vague2,vague3,vague4 = new ArrayList();
+	private ArrayList<ArrayList<Ennemi>> vagues = new ArrayList<ArrayList<Ennemi>>();
+
+	public Jeu() {	
 		carte= new Carte();		
-		ennemisEnJeu=new ArrayList();
+		ennemisEnJeu = new ArrayList();
 	}
 	
 	public void initialiserVagues(int choix) {
@@ -32,6 +24,7 @@ public class Jeu {
 		vagues.add(vague2);
 		vagues.add(vague3);
 		vagues.add(vague4);
+		
 		switch(choix) {
 		
 		 case 0:
@@ -82,7 +75,6 @@ public class Jeu {
 			ennemisEnJeu.add(vagues.get(choix).get(0));
 			vagues.get(choix).remove(vagues.get(choix).get(0));
 		}
-		
 	}
 	
 	public ArrayList<Ennemi> getEnnemisEnJeu(){
@@ -94,9 +86,7 @@ public class Jeu {
 	}
 	
 	public ArrayList<Ennemi> getVague(int choix) {
-		
 		return vagues.get(choix);
-		
 	}
 	
 	public int getPvButin() {
@@ -107,10 +97,10 @@ public class Jeu {
 		if(pvButin - d >0) {
 			pvButin-=d;
 		}
+		
 		else {
 			pvButin=0;
-		}
-		
+		}	
 	}
 
 	public Carte getCarte() {
@@ -122,7 +112,6 @@ public class Jeu {
 	}
 
 	public double getNbDiamant() {
-		// TODO Auto-generated method stub
 		return nbDiamants;
 	}
 
@@ -135,9 +124,7 @@ public class Jeu {
 	public void decrementerDiamant(int v) {
 		if(nbDiamants>=v) {
 			nbDiamants-=v;
-		}
-		
+		}	
 	}
-
 }
 
